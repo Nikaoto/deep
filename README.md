@@ -25,7 +25,11 @@ deep:queue(player.sprite, player.x, player.y, player.z)
 function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
 `
 
+## Demos
 The file `demo` has small examples of how **DEEP** should be used. I suggest you check it out to learn about more details.
+
+Here's what it does:
+![demo](https://i.imgur.com/IhQOFcZ.gif)
 
 
 ## Draw support

@@ -25,6 +25,8 @@ deep:queue(player.sprite, player.x, player.y, player.z)
 function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
 `
 
+#### NOTE: only use z axis values of 0 and above
+
 ## Demos
 The file `demo` has small examples of how **DEEP** should be used. I suggest you check it out to learn about more details.
 
@@ -52,5 +54,6 @@ Here's what it does:
 * love.graphics.quad- deep.graphics.quad
 * love.graphics.rectangle- deep.graphics.rectangle
 * love.graphics.stencil- deep.graphics.stencil
+* negative z axii
 * particle effects
 * other popular graphical libraries for LOVE2D

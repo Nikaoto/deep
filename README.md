@@ -1,7 +1,9 @@
 # DEEP
 Is a library for [**LÖVE2D**](https://love2d.org) that adds the Z axis.
-**DEEP** frees you from the tedious task of rearranging your drawing order and allows you
+
+]**DEEP** frees you from the tedious task of rearranging your drawing order and allows you
 to simply specify the z axis when drawing objects.
+
 
 ## Usage
 To use **DEEP** in your lua files, simply `require "deep"`.
@@ -21,6 +23,7 @@ function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
 
 `main.lua` is a small demonstration of how **DEEP** should be used. I suggest you check it out to learn about more details.
 
+
 ## Draw support
 *A list of the drawing techniques that **DEEP** supports*
 
@@ -28,6 +31,7 @@ function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
 
 #### Limitations
 For now, **DEEP** only lets you draw using the techniques specified above.
+
 
 ## TODO
 *Drawing techniques that I plan to add to **DEEP*** 

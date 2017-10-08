@@ -5,48 +5,93 @@ Is a library for [**LÖVE2D**](https://love2d.org) that adds the Z axis.
 to simply specify the z axis when drawing objects.
 
 
+
 ## Usage
 To use **DEEP** in your lua files, simply `require "deep"`.
 
-Drawing objects with **DEEP** is straightforward. Inside `love.draw()`, queue your objects up and 
+Drawing objects with **DEEP** is straightforward - inside `love.draw()`, queue your objects up and 
 then call `deep:draw()`.
 
-To queue up your objects, simply use functions listed in [Draw Support](#Draw) like `deep:queue()` 
-or `deep:rectangle()` like you wolud use their love versions.
+To queue up your objects, simply use the listed functions like you would use their love versions.
 
-For example:
+**DEEP**'s functions work exactly like their love.graphics counterparts.
+
+**NOTE: only use z axis values of 0 and above. DEEP does not support negative axii for now.**
+**NOTE2: draw order on the same z axis works just like the traditional draw order in LOVE2D: 
+each draw call draws over the previous ones**
+
+
+
+## Functions
+
+### deep:draw()
+*The heart of the library*
+
+Draws every object inside the draw queue. Always do this at the end of `love.draw()`.
+Everything you draw directly after calling `deep:draw()` will be drawn over your queue. Inversely,
+anything you directly draw before calling `deep:draw()` will be drawn under the queue.
+
+
+### deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
+*Equivalent to love.graphics.draw()*
+
+Takes every argument that `love.graphics.draw()` does with the addition of the z axis.
+
+Also works with skipping arguments:
 
 `
 deep:queue(player.sprite, player.x, player.y, player.z)
 `
 
-
-`deep:queue()` takes every argument that `love.graphics.draw()` does with the addition of the z axis:
-
-`
-function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
-`
-
 The same applies to every function in **DEEP**.
 
-`deep:setColor()` also works just like `love.graphics.setColor()`.
-**DEEP** also allows you to override the current color by calling any draw function followed by a 
-capital 'C' and specifying your desired color in the first argument:
+
+### deep:setColor(r, g, b, a)
+*Equivalent to love.graphics.setColor()*
+
+Takes RGBA values (ex: `deep:setColor(255, 0, 100)`) and applies the color to every following draw 
+call.
+
+When you skip the 4th argument (opacity), the default '255' is applied.
+
+
+### deep:setColor(color)
+
+The same as [**deep:setColor(r, g, b, a)**](#deep:setColor(r,), but takes values from a table 
+(ex: `deep:setColor({255, 0, 100})`)
+
+
+### deep:setColor()
+
+Calling this without arguments resets the color to love's default drawing color (white)
+
+
+### deep:rectangle(mode, x, y, z, width, height)
+*Equivalent to love.graphics.rectangle()*
+
+
+
+## Color overriding
+
+**DEEP** allows you to override the current color by calling any draw function followed by a capital
+ 'C' and specifying your desired color in the first argument, so 
+
+`
+deep:setColor(200, 0, 20)
+deep:rectangle("fill", 100, 100, 30, 50, 50")
+deep:setColor() -- reset color
+`
+
+is the same as
 
 `
 -- (color, mode, x, y, z, width, height)
 deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50) 
 `
 
-is the same as
+**NOTE: When overriding colors, the color must be passed as a table**
 
-`
-deep:setColor(200, 0, 20)
-deep:rectangle("fill, 100, 100, 30, 50, 50")
-deep:setColor() -- This resets the color to the default color in LOVE2D (white)
-`
 
-#### NOTE: only use z axis values of 0 and above
 
 ## Demos
 The file `demo` has small examples of how **DEEP** should be used. I suggest you check out 
@@ -56,7 +101,7 @@ Here's what it does:
 ![demo](https://i.imgur.com/IhQOFcZ.gif)
 
 
-## Draw support
+## Draw Support
 *A list of the drawing techniques that **DEEP** currently supports and their equivalent functions*
 
 * love.graphics.draw() - deep:queue()
@@ -80,4 +125,3 @@ Here's what it does:
 * negative z axii
 * particle effects
 * other popular graphical libraries for LOVE2D
-* describe each function separately

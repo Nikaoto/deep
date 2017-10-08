@@ -7,6 +7,11 @@ local defaults = {z = 0, r = 0, sx = 1, sy = 1, ox = 0, oy = 0, kx = 0, ky = 0, 
 local color = defaults.color
 
 function deep:setColor(c, ...)
+	if c == nil then
+		color = defaults.color
+		return
+	end
+
 	local n = select("#", ...)
 
 	if n == 0 then

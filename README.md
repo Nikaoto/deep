@@ -29,7 +29,22 @@ function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
 
 The same applies to every function in **DEEP**.
 
-`deep:setColor()` also works just like 
+`deep:setColor()` also works just like `love.graphics.setColor()`.
+**DEEP** also allows you to override the current color by calling any draw function followed by a 
+capital 'C' and specifying your desired color in the first argument:
+
+`
+-- (color, mode, x, y, z, width, height)
+deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50) 
+`
+
+is the same as
+
+`
+deep:setColor(200, 0, 20)
+deep:rectangle("fill, 100, 100, 30, 50, 50")
+deep:setColor() -- This resets the color to the default color in LOVE2D (white)
+`
 
 #### NOTE: only use z axis values of 0 and above
 
@@ -56,14 +71,13 @@ Here's what it does:
 * love.graphics.clear- deep.graphics.clear
 * love.graphics.ellipse- deep.graphics.ellipse
 * love.graphics.line- deep.graphics.line
-* love.graphics.point- deep.graphics.point
 * love.graphics.points- deep.graphics.points
 * love.graphics.polygon- deep.graphics.polygon
 * love.graphics.print- deep.graphics.print
-* love.graphics.quad- deep.graphics.quad
 * ~~love.graphics.rectangle- deep.graphics.rectangle~~
 * love.graphics.stencil- deep.graphics.stencil
 * ~~love.graphics.setColor~~
 * negative z axii
 * particle effects
 * other popular graphical libraries for LOVE2D
+* describe each function separately

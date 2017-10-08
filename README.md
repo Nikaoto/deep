@@ -101,13 +101,6 @@ Here's what it does:
 ![demo](https://i.imgur.com/jRJXcZL.gif)
 
 
-## Draw Support
-*A list of the drawing techniques that **DEEP** currently supports and their equivalent functions*
-
-* love.graphics.draw() - deep:queue()
-* love.graphics.rectangle() - deep:rectangle()
-* love.graphics.setColor() - deep:setColor()
-
 
 ## TODO
 *Drawing techniques that I plan to add to **DEEP*** 

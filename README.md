@@ -57,7 +57,7 @@ When you skip the 4th argument (opacity), the default '255' is applied.
 
 ### deep:setColor(color)
 
-The same as [**deep:setColor(r, g, b, a)**](#deep:setColor(r,), but takes values from a table 
+The same as [**deep:setColor(r, g, b, a)**](#deepsetcolorr-g-b-a), but takes values from a table 
 (ex: `deep:setColor({255, 0, 100})`)
 
 
@@ -98,7 +98,7 @@ The file `demo` has small examples of how **DEEP** should be used. I suggest you
 `main.lua` inside the directory to learn about more details.
 
 Here's what it does:
-![demo](https://i.imgur.com/IhQOFcZ.gif)
+![demo](https://i.imgur.com/jRJXcZL.gif)
 
 
 ## Draw Support

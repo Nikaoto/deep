@@ -6,9 +6,15 @@ local defaults = {z = 0, r = 0, sx = 1, sy = 1, ox = 0, oy = 0, kx = 0, ky = 0, 
 
 local color = defaults.color
 
-function deep:setColor(c)
-	if #c < 5 and #c >2 then
-		color = c
+function deep:setColor(c, ...)
+	local n = select("#", ...)
+
+	if n == 0 then
+		if #c < 5 and #c >2 then
+			color = c
+		end
+	elseif n > 1 and n < 4 then
+		color = {c, select(1, ...), select(2, ...), select(3, ...)}
 	end
 end
 

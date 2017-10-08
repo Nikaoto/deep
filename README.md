@@ -8,9 +8,11 @@ to simply specify the z axis when drawing objects.
 ## Usage
 To use **DEEP** in your lua files, simply `require "deep"`.
 
-Drawing objects with **DEEP** is straightforward. Inside `love.draw()`, queue your objects up and then call `deep:draw()`.
+Drawing objects with **DEEP** is straightforward. Inside `love.draw()`, queue your objects up and 
+then call `deep:draw()`.
 
-To enqueue your objects, simply use functions listed in [Draw Support](#Draw) like `deep:queue()` or `deep:rectangle()` like you wolud use their love versions.
+To queue up your objects, simply use functions listed in [Draw Support](#Draw) like `deep:queue()` 
+or `deep:rectangle()` like you wolud use their love versions.
 
 For example:
 
@@ -19,7 +21,7 @@ deep:queue(player.sprite, player.x, player.y, player.z)
 `
 
 
-`deep:queue()` takes every arguments that `love.graphics.draw()` does with the addition of the z axis:
+`deep:queue()` takes every argument that `love.graphics.draw()` does with the addition of the z axis:
 
 `
 function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
@@ -27,10 +29,13 @@ function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
 
 The same applies to every function in **DEEP**.
 
+`deep:setColor()` also works just like 
+
 #### NOTE: only use z axis values of 0 and above
 
 ## Demos
-The file `demo` has small examples of how **DEEP** should be used. I suggest you check out `main.lua` inside the directory to learn about more details.
+The file `demo` has small examples of how **DEEP** should be used. I suggest you check out 
+`main.lua` inside the directory to learn about more details.
 
 Here's what it does:
 ![demo](https://i.imgur.com/IhQOFcZ.gif)
@@ -41,6 +46,7 @@ Here's what it does:
 
 * love.graphics.draw() - deep:queue()
 * love.graphics.rectangle() - deep:rectangle()
+* love.graphics.setColor() - deep:setColor()
 
 
 ## TODO
@@ -57,7 +63,7 @@ Here's what it does:
 * love.graphics.quad- deep.graphics.quad
 * ~~love.graphics.rectangle- deep.graphics.rectangle~~
 * love.graphics.stencil- deep.graphics.stencil
-* love.graphics.setColor
+* ~~love.graphics.setColor~~
 * negative z axii
 * particle effects
 * other popular graphical libraries for LOVE2D

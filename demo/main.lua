@@ -66,12 +66,14 @@ function love.draw()
 
 	-- deep:setColor() works just like love.graphics.setColor(), but the color needs to be set 
 	-- before queuing instead of drawing
-	for i = 1, 100 do
-		deep:rectangle("fill", 50 + i*6, 110 + i, 3, 50, 50)
-	end
-	deep:setColor({255, 255, 0})
-	for i = 1, 100 do
+	deep:setColor(255, 255, 0, 255)
+	for i = 1, 100, 2 do
 		deep:rectangle("fill", 50 + i*6, 210 + i, 5, 50, 50)
+	end
+	-- You can also override the current color by calling any draw function 
+	-- with a capital 'C' at the end
+	for i = 1, 100, 2 do
+		deep:rectangleC({0, 40, 250}, "fill", 50 + i*6, 110 + i, 3, 50, 50)
 	end
 	-- Queue up the player
 	deep:queue(player.sprite, player.x, player.y, 2)

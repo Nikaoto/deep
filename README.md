@@ -13,10 +13,11 @@ Drawing objects with **DEEP** is straightforward. Inside `love.draw()`, queue yo
 To enqueue your objects, simply use `deep:queue()` like you wolud use `love.graphics.draw()`. 
 
 For example:
-`
 
+`
 deep:queue(player.sprite, player.x, player.y, player.z)
 `
+
 
 `deep:queue()` takes every arguments that `love.graphics.draw()` does with the addition of the z axis:
 
@@ -24,16 +25,13 @@ deep:queue(player.sprite, player.x, player.y, player.z)
 function deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
 `
 
-`main.lua` is a small demonstration of how **DEEP** should be used. I suggest you check it out to learn about more details.
+The file `demo` has small examples of how **DEEP** should be used. I suggest you check it out to learn about more details.
 
 
 ## Draw support
-*A list of the drawing techniques that **DEEP** supports*
+*A list of the drawing techniques that **DEEP** currently supports*
 
 * love.graphics.draw()
-
-#### Limitations
-For now, **DEEP** only lets you draw using the techniques specified above.
 
 
 ## TODO

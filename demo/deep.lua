@@ -2,7 +2,15 @@ deep = {}
 local drawQueue = {}
 
 -- Stores default values for queue function
-local defaults = {z = 0, r = 0, sx = 1, sy = 1, ox = 0, oy = 0, kx = 0, ky = 0}
+local defaults = {z = 0, r = 0, sx = 1, sy = 1, ox = 0, oy = 0, kx = 0, ky = 0, color = {255, 255, 255, 255}}
+
+local color = defaults.color
+
+function deep:setColor(c)
+	if #c < 5 and #c >2 then
+		color = c
+	end
+end
 
 -- Rereate drawQueue if needed
 local function renewQueue()
@@ -38,15 +46,28 @@ function deep:queue(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	enqueue(temp, z)
 end
 
-function deep:rectangle(mode, x, y, z, width, height)
+-- Queues up a rectangle with specified color
+function deep:rectangleC(color, mode, x, y, z, width, height)
 	renewQueue()
 
 	local temp = {mode, x, y, width, height}
-	setmetatable(temp, {__call = function() 
-			love.graphics.rectangle(temp[1], temp[2], temp[3], temp[4],temp[5]) 
+	setmetatable(temp, {__call = function()
+			love.graphics.setColor(color)
+			love.graphics.rectangle(temp[1], temp[2], temp[3], temp[4], temp[5])
+			love.graphics.setColor(defaults.color)
 		end})
 
 	enqueue(temp, z)
+end
+
+-- Queues up a rectangle
+function deep:rectangle(mode, x, y, z, width, height)
+	self:rectangleC(color, mode, x, y, z, width, height)
+end
+
+local function reset()
+	color = defaults.color
+	drawQueue = {}
 end
 
 -- Draws every queued object in order of their Z axii
@@ -56,5 +77,5 @@ function deep:draw()
 			o()
 		end
 	end
-	drawQueue = {}
+	reset()
 end

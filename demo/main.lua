@@ -55,22 +55,33 @@ end
 
 function love.draw()
 	-- Queue up four objects and draw them 50 times
-	-- Take note of the last argument of deep:queue - (the z axis); green cubes are at 1, blues at 3, and the player at 2
+	-- Take note of the last argument of deep:queue - (the z axis); 
+	-- green cubes are at 1, blues at 3, and the player at 2
 	for i = 1, 100, 2 do
-		deep:rectangle("fill", 50 + i*6, 110 + i, 3, 50, 50)
 		deep:queue(blueSquare.sprite, blueSquare.x + i*2, blueSquare.y - i*2, 4)
 		deep:queue(greenSquare.sprite, blueSquare.x - i*2, blueSquare.y - i*2, 1)
 		deep:queue(greenSquare.sprite, greenSquare.x - i*2, greenSquare.y - i*2, 1)
 		deep:queue(blueSquare.sprite, greenSquare.x + i*2, greenSquare.y - i*2, 4)
+	end
+
+	-- deep:setColor() works just like love.graphics.setColor(), but the color needs to be set 
+	-- before queuing instead of drawing
+	for i = 1, 100 do
+		deep:rectangle("fill", 50 + i*6, 110 + i, 3, 50, 50)
+	end
+	deep:setColor({255, 255, 0})
+	for i = 1, 100 do
+		deep:rectangle("fill", 50 + i*6, 210 + i, 5, 50, 50)
 	end
 	-- Queue up the player
 	deep:queue(player.sprite, player.x, player.y, 2)
 
 	-- Draw everything in the queue
 	deep:draw()
-	--Notice how the queue order is mixed up, but everything gets drawn correctly according to their Z axis
+	--Notice how the queue order is mixed up, but everything gets drawn according to their Z axis
 
 	-- FPS timer to check performance
-	-- (anything drawn directly will draw over the queue if it's after deep:draw() and under if it's before deep:draw())
+	-- (anything drawn directly will depend on the draw call being before or after deep:draw())
 	love.graphics.print(love.timer.getFPS().."FPS")
+	-- Because this draw call is after deep:draw() it draws over everything
 end

@@ -67,6 +67,7 @@ function love.draw()
 
 	-- Draw everything in the queue
 	deep:draw()
+	--Notice how the queue order is mixed up, but everything gets drawn correctly according to their Z axis
 
 	-- FPS timer to check performance
 	-- (anything drawn directly will draw over the queue if it's after deep:draw() and under if it's before deep:draw())

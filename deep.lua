@@ -49,12 +49,6 @@ local function enqueue(t, z)
 	end
 end
 
-local function safeCall(func)
-	if func ~= nil then
-		func()
-	end
-end
-
 -- Queues up an object to draw according to its Z axis
 function deep:queue(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	renewQueue()
@@ -91,42 +85,30 @@ function deep:rectangle(mode, x, y, z, width, height)
 	self:rectangleC(color, mode, x, y, z, width, height)
 end
 
+function deep:printC(c, text, x, y, z, r, sx, sy, ox, oy, kx, ky)
+	renewQueue()
+
+	z = z or defaults.r
+	r = r or defaults.r
+	sx = sx or defaults.sx; sy = sy or defaults.sy
+	ox = ox or defaults.ox; oy = oy or defaults.oy
+	kx = kx or defaults.kx;	ky = ky or defaults.ky
+
+	local temp = {text, x, y, r, sx, sy, ox, oy, kx, ky}
+	setmetatable(temp, {__call = function()
+			love.graphics.setColor(c)
+			love.graphics.print(temp[1], temp[2], temp[3], temp[4], temp[5], 
+				temp[6], temp[7], temp[8], temp[9], temp[10])
+			love.graphics.setColor(defaults.color)
+		end})
+
+	enqueue(temp, z)
+end
+
 function deep:print(text, x, y, z, r, sx, sy, ox, oy, kx, ky)
-	renewQueue()
-
-	z = z or defaults.r
-	r = r or defaults.r
-	sx = sx or defaults.sx; sy = sy or defaults.sy
-	ox = ox or defaults.ox; oy = oy or defaults.oy
-	kx = kx or defaults.kx;	ky = ky or defaults.ky
-	enqueue(deep:printT(text, x, y, sx, sy, ox, oy, kx, ky))
-
-	local temp = {text, x, y, r, sx, sy, ox, oy, kx, ky}
-	setmetatable(temp, {__call = function()
-			love.graphics.print(temp[1], temp[2], temp[3], temp[4], temp[5], 
-				temp[6], temp[7], temp[8], temp[9], temp[10])
-		end})
-
-	enqueue(temp, z)
+	self:printC(color, text, x, y, z, r, sx, sy, ox, oy, kx, ky)
 end
 
-function deep:printC(color, text, x, y, z, r, sx, sy, ox, oy, kx, ky)
-	renewQueue()
-
-	z = z or defaults.r
-	r = r or defaults.r
-	sx = sx or defaults.sx; sy = sy or defaults.sy
-	ox = ox or defaults.ox; oy = oy or defaults.oy
-	kx = kx or defaults.kx;	ky = ky or defaults.ky
-
-	local temp = {text, x, y, r, sx, sy, ox, oy, kx, ky}
-	setmetatable(temp, {__call = function()
-			love.graphics.print(temp[1], temp[2], temp[3], temp[4], temp[5], 
-				temp[6], temp[7], temp[8], temp[9], temp[10])
-		end})
-
-	enqueue(temp, z)
-end
 --[[function deep:line(x1, y1, x2, y2, ...)
 	self:lineC(color, x1, y1, x2, y2, ...)
 end
@@ -154,9 +136,9 @@ end
 -- Draws every queued object in order of their Z axii
 function deep:draw()
 	-- Check if draw color was directly changed and revert to deep's color
-	--if love.graphics.getColor() ~= deep:getColor() then
-	--	love.graphics.setColor(deep:getColor())
-	--end
+	if love.graphics.getColor() ~= deep:getColor() then
+		love.graphics.setColor(deep:getColor())
+	end
 
 	-- Draw everything in queue
 	for k, v in pairs(drawQueue) do

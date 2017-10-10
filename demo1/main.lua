@@ -1,11 +1,10 @@
 -- main.lua
 -- Demonstrates how DEEP can be used effectively
+package.path = package.path .. ";../?.lua"
 require "../deep"
 
 -- Loading tables and sprites
 function love.load()
-	love.window.setFullscreen(true)
-
 	blueSquare = {
 		sprite = love.graphics.newImage("res/blue_cube.png"),
 		x = 500,
@@ -59,7 +58,7 @@ function love.draw()
 	-- Queue up four objects and draw them 50 times
 	-- Take note of the last argument of deep:queue - (the z axis); 
 	-- green cubes are at 1, blues at 3, and the player at 2
-	for i = 1, 200, 2 do
+	for i = 1, 100, 2 do
 		deep:queue(blueSquare.sprite, blueSquare.x + i*2, blueSquare.y - i*2, 4)
 		deep:queue(greenSquare.sprite, blueSquare.x - i*2, blueSquare.y - i*2, 1)
 		deep:queue(greenSquare.sprite, greenSquare.x - i*2, greenSquare.y - i*2, 1)
@@ -69,13 +68,13 @@ function love.draw()
 	-- deep:setColor() works just like love.graphics.setColor(), but the color needs to be set 
 	-- before queuing instead of drawing
 	deep:setColor(255, 255, 0) -- Yellow
-	for i = 1, 200, 2 do
+	for i = 1, 100, 2 do
 		deep:rectangle("fill", 50 + i*6, 210 + i, 5, 50, 50)
 	end
 	
 	-- You can also override the current color by calling any draw function 
 	-- with a capital 'C' at the end
-	for i = 1, 200, 2 do
+	for i = 1, 100, 2 do
 		deep:rectangleC({255, 180, 20}, "fill", 50 + i*6, 110 + i, 3, 50, 50) -- Orange
 	end
 

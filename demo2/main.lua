@@ -53,9 +53,8 @@ function deepdraw()
 end
 
 function love.draw()
-	--deepdraw()
-	lovedraw()
-	brejk()
+	deepdraw()
+	--lovedraw()
 end
 
 function randColor()

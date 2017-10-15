@@ -81,6 +81,7 @@ is the same as
 
 `
 -- (color, mode, x, y, z, width, height)
+
 deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50) 
 `
 

@@ -46,28 +46,23 @@ deep:queue(player.sprite, player.x, player.y, player.z)
 The same applies to every function in **DEEP**.
 
 
-### deep:setColor(r, g, b, a)
+### deep:setColor()
 *Equivalent to love.graphics.setColor()*
 
-Takes RGBA values (ex: `deep:setColor(255, 0, 100)`) and applies the color to every following draw 
-call.
-
-When you skip the 4th argument (opacity), the default '255' is applied.
-
-
-### deep:setColor(color)
-
-The same as [**deep:setColor(r, g, b, a)**](#deepsetcolorr-g-b-a), but takes values from a table 
-(ex: `deep:setColor({255, 0, 100})`)
-
-
-### deep:setColor()
-
-Calling this without arguments resets the color to love's default drawing color (white)
+Has a couple of variations:
+* **deep:setColor(r, g, b, a)** - Takes RGBA values (ex: `deep:setColor(255, 0, 100)`) and applies the 
+color to every following draw call. When you skip the 4th argument (opacity), the default '255' is 
+applied.
+* **deep:setColor(color)** - Takes RGBA values from a table (ex: `deep:setColor({255, 0, 100})`)
+* **deep:setColor()** - When no arguments are passed, **DEEP** resets the color to white
 
 
 ### deep:rectangle(mode, x, y, z, width, height)
 *Equivalent to love.graphics.rectangle()*
+
+
+### deep:print()
+*Equivalent to love.graphics.print()*
 
 
 
@@ -89,15 +84,17 @@ is the same as
 deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50) 
 `
 
+Color overriding works with every draw function that is also affected by love.graphics.setColor()
+(ex. love.graphics.print(), love.graphics.line()...)
+
 **NOTE: When overriding colors, the color must be passed as a table**
 
 
-
 ## Demos
-The file `demo` has small examples of how **DEEP** should be used. I suggest you check out 
-`main.lua` inside the directory to learn about more details.
+The demo files have small examples of how **DEEP**'s different functions should be used. I suggest 
+you check out each one of them to learn about the various edge cases and details of **DEEP**.
 
-Here's what it does:
+Here's what demo1 does:
 ![demo](https://i.imgur.com/jRJXcZL.gif)
 
 
@@ -111,7 +108,7 @@ Here's what it does:
 * love.graphics.line- deep.graphics.line
 * love.graphics.points- deep.graphics.points
 * love.graphics.polygon- deep.graphics.polygon
-* love.graphics.print- deep.graphics.print
+* ~~love.graphics.print- deep.graphics.print~~
 * ~~love.graphics.rectangle- deep.graphics.rectangle~~
 * love.graphics.stencil- deep.graphics.stencil
 * ~~love.graphics.setColor~~

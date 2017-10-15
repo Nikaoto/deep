@@ -72,17 +72,16 @@ applied.
  'C' and specifying your desired color in the first argument, so 
 
 `
-deep:setColor(200, 0, 20)
-deep:rectangle("fill", 100, 100, 30, 50, 50")
-deep:setColor() -- reset color
+	deep:setColor(200, 0, 20)
+	deep:rectangle("fill", 100, 100, 30, 50, 50")
+	deep:setColor() -- reset color
 `
 
 is the same as
 
 `
--- (color, mode, x, y, z, width, height)
-
-deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50) 
+	-- (color, mode, x, y, z, width, height)
+	deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50) 
 `
 
 Color overriding works with every draw function that is also affected by love.graphics.setColor()

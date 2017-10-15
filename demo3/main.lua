@@ -15,11 +15,11 @@ function love.load()
 	yellow = {255, 255, 0}
 	blue = {0, 0, 255}
 	green = {0, 255, 0}
-	purple = {255, 0, 255}
+	white = {255, 255, 255}
 
 	font = love.graphics.newFont(34)
 	t1 = love.graphics.newText(font)
-	t1:addf({purple, "A"}, 100, "left", 40, 40, _, 2, 2)
+	t1:addf({white, "A"}, 100, "left", 40, 40, _, 2, 2)
 	t1:addf({green, "B"}, 100, "center", 40, 40, _, 2, 2)
 end
 

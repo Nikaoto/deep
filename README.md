@@ -39,9 +39,9 @@ Takes every argument that `love.graphics.draw()` does with the addition of the z
 
 Also works with skipping arguments:
 
-`
+```Lua
 deep:queue(player.sprite, player.x, player.y, player.z)
-`
+```
 
 The same applies to every function in **DEEP**.
 
@@ -71,18 +71,18 @@ applied.
 **DEEP** allows you to override the current color by calling any draw function followed by a capital
  'C' and specifying your desired color in the first argument, so 
 
-`
+```Lua
 	deep:setColor(200, 0, 20)
 	deep:rectangle("fill", 100, 100, 30, 50, 50")
 	deep:setColor() -- reset color
-`
+```
 
 is the same as
 
-`
+```Lua
 	-- (color, mode, x, y, z, width, height)
 	deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50) 
-`
+```
 
 Color overriding works with every draw function that is also affected by love.graphics.setColor()
 (ex. love.graphics.print(), love.graphics.line()...)

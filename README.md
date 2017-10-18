@@ -106,7 +106,7 @@ Here's what demo1 does:
 *Drawing techniques that I plan to add to **DEEP*** 
 *Everything that's crossed off is already implemented*
 * love.graphics.arc - deep.graphics.arc
-* love.graphics.circle- deep.graphics.circle
+* ~~love.graphics.circle- deep.graphics.circle~~
 * love.graphics.clear- deep.graphics.clear
 * ~~love.graphics.ellipse- deep.graphics.ellipse~~
 * love.graphics.line- deep.graphics.line

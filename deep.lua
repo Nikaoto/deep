@@ -128,6 +128,25 @@ function deep:lineC(overrideColor, x1, y1, x2, y2, ...)
 	end
 end--]]
 
+function deep:circleC(c, mode, x, y, z, radius, segments)
+	renewQueue()
+
+	z = z or defaults.z
+
+	local temp = {mode, x, y, radius, segments}
+	setmetatable(temp, {__call = function()
+			love.graphics.setColor(c)	
+			love.graphics.circle(temp[1], temp[2], temp[3], temp[4], temp[5])
+			love.graphics.setColor(defaults.color)
+		end})
+
+	enqueue(temp, z)
+end
+
+function deep:circle(mode, x, y, z, radius, segments)
+	self:circleC(color, mode, x, y, z, radius, segments)
+end
+
 function deep:ellipseC(c, mode, x, y, z, radiusx, radiusy)
 	renewQueue()
 

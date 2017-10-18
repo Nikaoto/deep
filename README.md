@@ -69,6 +69,11 @@ applied.
 *Equivalent to love.graphics.ellipse()*
 
 
+### deep:circle(mode, x, y, z, segments)
+*Equivalent to love.graphics.circle()*
+
+
+
 ## Color overriding
 
 **DEEP** allows you to override the current color by calling any draw function followed by a capital

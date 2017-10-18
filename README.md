@@ -104,7 +104,7 @@ Here's what demo1 does:
 * love.graphics.arc - deep.graphics.arc
 * love.graphics.circle- deep.graphics.circle
 * love.graphics.clear- deep.graphics.clear
-* love.graphics.ellipse- deep.graphics.ellipse
+* ~~love.graphics.ellipse- deep.graphics.ellipse~~
 * love.graphics.line- deep.graphics.line
 * love.graphics.points- deep.graphics.points
 * love.graphics.polygon- deep.graphics.polygon

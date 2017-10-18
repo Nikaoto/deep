@@ -88,7 +88,7 @@ end
 function deep:printC(c, text, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	renewQueue()
 
-	z = z or defaults.r
+	z = z or defaults.z
 	r = r or defaults.r
 	sx = sx or defaults.sx; sy = sy or defaults.sy
 	ox = ox or defaults.ox; oy = oy or defaults.oy
@@ -127,6 +127,25 @@ function deep:lineC(overrideColor, x1, y1, x2, y2, ...)
 		--for 
 	end
 end--]]
+
+function deep:ellipseC(c, mode, x, y, z, radiusx, radiusy)
+	renewQueue()
+
+	z = z or defaults.z
+
+	local temp = {mode, x, y, radiusx, radiusy}
+	setmetatable(temp, {__call = function()
+			love.graphics.setColor(c)
+			love.graphics.ellipse(temp[1], temp[2], temp[3], temp[4], temp[5])	
+			love.graphics.setColor(defaults.color)
+		end})
+
+	enqueue(temp, z)
+end
+
+function deep:ellipse(mode, x, y, z, radiusx, radiusy)
+	self:ellipsec(color, mode, x, y, z, radiusx, radiusy)
+end
 
 local function reset()
 	color = defaults.color

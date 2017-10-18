@@ -61,9 +61,12 @@ applied.
 *Equivalent to love.graphics.rectangle()*
 
 
-### deep:print()
+### deep:print(text)
 *Equivalent to love.graphics.print()*
 
+
+### deep:ellipse(mode, x, y, z, rediusx, radiusy)
+*Equivalent to love.graphics.ellipse()*
 
 
 ## Color overriding
@@ -101,6 +104,7 @@ Here's what demo1 does:
 
 ## TODO
 *Drawing techniques that I plan to add to **DEEP*** 
+*Everything that's crossed off is already implemented*
 * love.graphics.arc - deep.graphics.arc
 * love.graphics.circle- deep.graphics.circle
 * love.graphics.clear- deep.graphics.clear

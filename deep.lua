@@ -68,6 +68,26 @@ function deep:queue(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	enqueue(temp, z)
 end
 
+function deep:queueS(shader, drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
+	renewQueue()
+
+	z = z or defaults.z
+	r = r or defaults.r
+	sx = sx or defaults.sx; sy = sy or defaults.sy
+	ox = ox or defaults.ox; oy = oy or defaults.oy
+	kx = kx or defaults.ks; ky = ky or defaults.ky
+
+	local temp = {shader, drawable, x, y, r, sx, sy, ox, oy, kx, ky}
+	setmetatable(temp, {__call = function () 
+			love.graphics.setShader(temp[1])
+			love.graphics.draw(temp[2], temp[3], temp[4], temp[5],
+				temp[6], temp[7], temp[8], temp[9], temp[10], temp[11], temp[12]) 
+			love.graphics.setShader()
+		end})
+
+	enqueue(temp, z)
+end
+
 function deep:rectangleC(c, mode, x, y, z, width, height)
 	renewQueue()
 

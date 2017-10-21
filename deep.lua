@@ -109,24 +109,24 @@ function deep:print(text, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	self:printC(color, text, x, y, z, r, sx, sy, ox, oy, kx, ky)
 end
 
---[[function deep:line(x1, y1, x2, y2, ...)
-	self:lineC(color, x1, y1, x2, y2, ...)
+function deep:line(x1, y1, x2, y2, z)
+	self:lineC(color, x1, y1, x2, y2, z)
 end
 
-function deep:lineC(overrideColor, x1, y1, x2, y2, ...)
+function deep:lineC(overrideColor, x1, y1, x2, y2, z)
 	renewQueue()
 
-	if select("#", ...) == 0 then
-		local temp = {x1, y1, x2, y2}
-		setmetatable(temp, {__call = function()
-				love.graphics.setColor(overrideColor)
-				love.graphics.line(temp[1], temp[2], temp[3], temp[4])
-				love.graphics.setColor(defaults.color)
-			end})
-	else
-		--for 
-	end
-end--]]
+	z = z  or defaults.z
+
+	local temp = {x1, y1, x2, y2}
+	setmetatable(temp, {__call = function()
+			love.graphics.setColor(overrideColor)
+			love.graphics.line(temp[1], temp[2], temp[3], temp[4])
+			love.graphics.setColor(defaults.color)
+		end})
+
+	enqueue(temp, z)
+end
 
 function deep:circleC(c, mode, x, y, z, radius, segments)
 	renewQueue()

@@ -109,12 +109,13 @@ Here's what demo1 does:
 
 ## TODO
 *Drawing techniques that I plan to add to **DEEP*** 
+
 *Everything that's crossed off is already implemented*
 * love.graphics.arc - deep.graphics.arc
 * ~~love.graphics.circle- deep.graphics.circle~~
 * love.graphics.clear- deep.graphics.clear
 * ~~love.graphics.ellipse- deep.graphics.ellipse~~
-* love.graphics.line- deep.graphics.line
+* love.graphics.line- deep.graphics.line *works only when drawing one line*
 * love.graphics.points- deep.graphics.points
 * love.graphics.polygon- deep.graphics.polygon
 * ~~love.graphics.print- deep.graphics.print~~

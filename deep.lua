@@ -1,5 +1,6 @@
 deep = {}
 local drawQueue = {}
+local maxZ = 1
 
 -- Stores default values for queue function
 local defaults = {
@@ -42,6 +43,10 @@ end
 
 -- Takes table __call function and z index and inserts it into drawQueue
 local function enqueue(t, z)
+	if z > maxZ then
+		maxZ = z
+	end
+
 	if (drawQueue[z] == nil) then
 		drawQueue[z] = {t}
 	else
@@ -198,13 +203,13 @@ function deep:draw()
 		love.graphics.setColor(deep:getColor())
 	end
 
-	-- Draw everything in queue
-	for k, v in pairs(drawQueue) do
-		for _, o in pairs(v) do
-			o()
+	for i = 1, maxZ do
+		if drawQueue[i] then
+			for _, o in pairs(drawQueue[i]) do
+				o()
+			end
 		end
 	end
-
 	-- Reset queue and color for next draw loop
 	reset()
 end

@@ -1,10 +1,11 @@
-deep = {}
+local deep = {}
+deep.__index = deep
 local drawQueue = {}
 local maxZ = 1
 
 -- Stores default values for queue function
 local defaults = {
-	z = 0, r = 0, 
+	z = 1, r = 0, 
 	sx = 1, sy = 1, 
 	ox = 0, oy = 0, 
 	kx = 0, ky = 0, 
@@ -55,7 +56,7 @@ local function enqueue(t, z)
 end
 
 -- Queues up an object to draw according to its Z axis
-function deep:queue(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
+function deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	renewQueue()
 
 	z = z or defaults.z
@@ -197,7 +198,7 @@ local function reset()
 end
 
 -- Draws every queued object in order of their Z axii
-function deep:draw()
+function deep:drawAll()
 	-- Check if draw color was directly changed and revert to deep's color
 	if love.graphics.getColor() ~= deep:getColor() then
 		love.graphics.setColor(deep:getColor())

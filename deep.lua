@@ -213,3 +213,5 @@ function deep:draw()
 	-- Reset queue and color for next draw loop
 	reset()
 end
+
+return deep

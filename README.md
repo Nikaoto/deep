@@ -20,16 +20,16 @@ To queue up your objects, simply use the listed functions like you would use the
 
 DEEP's functions work exactly like their love.graphics counterparts.
 
-*NOTE: only use z axis values of 0 and above. DEEP does not support negative axii for now.*
+***NOTE:** only use z axis values of 0 and above. DEEP does not support negative axii for now.*
 
-*NOTE2: draw order on the same z axis works just like the traditional draw order in LOVE2D: 
+***NOTE2:** draw order on the same z axis works just like the traditional draw order in LOVE2D: 
 each draw call draws over the previous ones*
 
 
 
 ## Functions
 
-#### deep:drawAll()
+### deep:drawAll()
 *The heart of the library*
 
 Draws every object inside the draw queue. Always do this at the end of `love.draw()`.
@@ -37,7 +37,7 @@ Everything you draw directly after calling `deep:drawAll()` will be drawn over y
 Inversely, anything you directly draw before calling `deep:drawAll()` will be drawn under the queue.
 
 
-#### deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
+### deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 *Equivalent to love.graphics.draw()*
 
 Takes every argument that `love.graphics.draw()` does with the addition of the z axis.
@@ -51,7 +51,7 @@ deep:draw(player.sprite, player.x, player.y, player.z)
 The same applies to every function in DEEP.
 
 
-#### deep:setColor()
+### deep:setColor()
 *Equivalent to love.graphics.setColor()*
 
 Has a couple of variations:
@@ -62,19 +62,19 @@ applied.
 * **deep:setColor()** - When no arguments are passed, DEEP resets the color to white
 
 
-#### deep:rectangle(mode, x, y, z, width, height)
+### deep:rectangle(mode, x, y, z, width, height)
 *Equivalent to love.graphics.rectangle()*
 
 
-#### deep:print(text)
+### deep:print(text)
 *Equivalent to love.graphics.print()*
 
 
-#### deep:ellipse(mode, x, y, z, rediusx, radiusy)
+### deep:ellipse(mode, x, y, z, rediusx, radiusy)
 *Equivalent to love.graphics.ellipse()*
 
 
-#### deep:circle(mode, x, y, z, segments)
+### deep:circle(mode, x, y, z, segments)
 *Equivalent to love.graphics.circle()*
 
 
@@ -100,7 +100,7 @@ deep:rectangleC({200, 0, 20}, "fill", 100, 100, 30, 50, 50)
 Color overriding works with every draw function that is also affected by love.graphics.setColor()
 (ex. love.graphics.print(), love.graphics.line()...)
 
-**NOTE: When overriding colors, the color must be passed as a table**
+***NOTE:** When overriding colors, the color must be passed as a table*
 
 
 ## Defaults

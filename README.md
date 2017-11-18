@@ -10,7 +10,7 @@ to simply specify the z axis when drawing objects.
 To use **DEEP** in your lua files, simply `require "deep"`.
 
 Drawing objects with **DEEP** is straightforward - inside `love.draw()`, queue your objects up and 
-then call `deep:draw()`.
+then call `deep:drawAll()`.
 
 To queue up your objects, simply use the listed functions like you would use their love versions.
 
@@ -24,15 +24,15 @@ each draw call draws over the previous ones**
 
 ## Functions
 
-### deep:draw()
+### deep:drawAll()
 *The heart of the library*
 
 Draws every object inside the draw queue. Always do this at the end of `love.draw()`.
-Everything you draw directly after calling `deep:draw()` will be drawn over your queue. Inversely,
-anything you directly draw before calling `deep:draw()` will be drawn under the queue.
+Everything you draw directly after calling `deep:drawAll()` will be drawn over your queue. 
+Inversely, anything you directly draw before calling `deep:drawAll()` will be drawn under the queue.
 
 
-### deep:queue(x, y, z, r, sx, sy, ox, oy, kx, ky)
+### deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 *Equivalent to love.graphics.draw()*
 
 Takes every argument that `love.graphics.draw()` does with the addition of the z axis.
@@ -40,7 +40,7 @@ Takes every argument that `love.graphics.draw()` does with the addition of the z
 Also works with skipping arguments:
 
 ```Lua
-deep:queue(player.sprite, player.x, player.y, player.z)
+deep:draw(player.sprite, player.x, player.y, player.z)
 ```
 
 The same applies to every function in **DEEP**.
@@ -98,6 +98,18 @@ Color overriding works with every draw function that is also affected by love.gr
 **NOTE: When overriding colors, the color must be passed as a table**
 
 
+## Defaults
+
+When you skip arguments in **DEEP**'s function calls, the variables from the `defaults` table will 
+instead be used. 
+
+For example:
+```Lua
+deep:print("Hello!", 10, 10) -- Drawing at x = 10, y = 10
+```
+
+The z argument is skipped as you can see, so it will be defaulted to `defaults.z`
+
 ## Demos
 The demo files have small examples of how **DEEP**'s different functions should be used. I suggest 
 you check out each one of them to learn about the various edge cases and details of **DEEP**.
@@ -124,4 +136,4 @@ Here's what demo1 does:
 * ~~love.graphics.setColor~~
 * negative z axii
 * particle effects
-* other popular graphical libraries for LOVE2D
+* support for other popular graphical libraries for LOVE2D

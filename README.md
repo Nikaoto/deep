@@ -7,7 +7,11 @@ to simply specify the z axis when drawing objects.
 
 
 ## Usage
-To use **DEEP** in your lua files, simply `require "deep"`.
+To use **DEEP** in your lua files, at the beginning of the file, simply do:
+
+```Lua
+local deep = require "deep"
+```
 
 Drawing objects with **DEEP** is straightforward - inside `love.draw()`, queue your objects up and 
 then call `deep:drawAll()`.

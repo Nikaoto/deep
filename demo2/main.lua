@@ -2,7 +2,7 @@
 -- Fills the screen with randomly colored rectangles
 -- Demonstrates how much impact DEEP has on performance
 package.path = package.path .. ";../?.lua"
-require "deep"
+local deep = require "deep"
 
 function love.load()
 	love.window.setFullscreen(true)
@@ -44,7 +44,7 @@ function deepdraw()
 	end
 
 	-- Draw everything in the queue
-	deep:draw()
+	deep:drawAll()
 
 	-- FPS timer to check performance
 	love.graphics.print(love.timer.getFPS().."FPS")

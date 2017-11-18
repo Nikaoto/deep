@@ -74,6 +74,7 @@ function deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	enqueue(temp, z)
 end
 
+-- Queues up an object to draw with the given shader
 function deep:queueS(shader, drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	renewQueue()
 
@@ -135,10 +136,6 @@ function deep:print(text, x, y, z, r, sx, sy, ox, oy, kx, ky)
 	self:printC(color, text, x, y, z, r, sx, sy, ox, oy, kx, ky)
 end
 
-function deep:line(x1, y1, x2, y2, z)
-	self:lineC(color, x1, y1, x2, y2, z)
-end
-
 function deep:lineC(overrideColor, x1, y1, x2, y2, z)
 	renewQueue()
 
@@ -152,6 +149,10 @@ function deep:lineC(overrideColor, x1, y1, x2, y2, z)
 		end})
 
 	enqueue(temp, z)
+end
+
+function deep:line(x1, y1, x2, y2, z)
+	self:lineC(color, x1, y1, x2, y2, z)
 end
 
 function deep:circleC(c, mode, x, y, z, radius, segments)

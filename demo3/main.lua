@@ -2,7 +2,7 @@
 -- Text demo for deep using love's Text object and deep:print
 
 package.path = package.path .. ";../?.lua"
-require "deep"
+local deep = require "deep"
 
 
 function love.keypressed(key)
@@ -24,11 +24,11 @@ function love.load()
 end
 
 function love.draw()
-	deep:queue(t1, 10, 10, 50)
+	deep:draw(t1, 10, 10, 50)
 
 	deep:printC(blue, "I am drawn over the red square", 10, 30, 15, _, 2, 2)
 	deep:rectangleC({255, 0, 0}, "fill", 10, 10, 10, 200, 200)
 	deep:printC(yellow, "I am drawn under the red square", 10, 10, 5, _, 2, 2)
 
-	deep:draw()
+	deep:drawAll()
 end

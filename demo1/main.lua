@@ -1,7 +1,7 @@
 -- main.lua
 -- Demonstrates how DEEP can be used effectively
 package.path = package.path .. ";../?.lua"
-require "../deep"
+local deep = require "../deep"
 
 -- Loading tables and sprites
 function love.load()
@@ -56,13 +56,13 @@ end
 
 function love.draw()
 	-- Queue up four objects and draw them 50 times
-	-- Take note of the last argument of deep:queue - (the z axis); 
+	-- Take note of the last argument of deep:draw - (the z axis); 
 	-- green cubes are at 1, blues at 3, and the player at 2
 	for i = 1, 100, 2 do
-		deep:queue(blueSquare.sprite, blueSquare.x + i*2, blueSquare.y - i*2, 4)
-		deep:queue(greenSquare.sprite, blueSquare.x - i*2, blueSquare.y - i*2, 1)
-		deep:queue(greenSquare.sprite, greenSquare.x - i*2, greenSquare.y - i*2, 1)
-		deep:queue(blueSquare.sprite, greenSquare.x + i*2, greenSquare.y - i*2, 4)
+		deep:draw(blueSquare.sprite, blueSquare.x + i*2, blueSquare.y - i*2, 4)
+		deep:draw(greenSquare.sprite, blueSquare.x - i*2, blueSquare.y - i*2, 1)
+		deep:draw(greenSquare.sprite, greenSquare.x - i*2, greenSquare.y - i*2, 1)
+		deep:draw(blueSquare.sprite, greenSquare.x + i*2, greenSquare.y - i*2, 4)
 	end
 
 	-- deep:setColor() works just like love.graphics.setColor(), but the color needs to be set 
@@ -79,10 +79,10 @@ function love.draw()
 	end
 
 	-- Queue up the player
-	deep:queue(player.sprite, player.x, player.y, 3)
+	deep:draw(player.sprite, player.x, player.y, 3)
 
 	-- Draw everything in the queue
-	deep:draw()
+	deep:drawAll()
 	--Notice how the queue order is mixed up, but everything gets drawn according to their Z axis
 
 	-- FPS timer to check performance

@@ -2,7 +2,7 @@
 -- Ellipse and circle demo for deep
 
 package.path = package.path .. ";../?.lua"
-require "deep"
+local deep = require "deep"
 
 
 function love.keypressed(key)
@@ -34,5 +34,5 @@ function love.draw()
 	deep:rectangleC({255, 0, 0}, "fill", cx - 60, cy - 60, 5, 120, 120)
 	deep:circleC({0, 0, 255}, "fill", cx, cy, 1, 60*math.sqrt(2))
 
-	deep:draw()
+	deep:drawAll()
 end

@@ -65,7 +65,7 @@ function love.draw()
 		deep:draw(blueSquare.sprite, greenSquare.x + i*2, greenSquare.y - i*2, 4)
 	end
 
-	-- deep:setColor() works just like love.graphics.setColor(), but the color needs to be set 
+	-- deep:setColor() works just like love.graphics.setColor(). The color needs to be set 
 	-- before queuing instead of drawing
 	deep:setColor(255, 255, 0) -- Yellow
 	for i = 1, 100, 2 do
@@ -88,5 +88,5 @@ function love.draw()
 	-- FPS timer to check performance
 	-- (anything drawn directly will depend on the draw call being before or after deep:draw())
 	love.graphics.print(love.timer.getFPS().."FPS")
-	-- Because this draw call is after deep:draw() it draws over everything
+	-- Because this draw call is after deep:drawAll() it draws over everything
 end

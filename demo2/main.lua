@@ -26,11 +26,7 @@ function lovedraw()
 		end 
 	end
 
-	love.graphics.setColor(0, 0, 0)
-	-- FPS timer to check performance
-	love.graphics.print(love.timer.getFPS().."FPS")
-	love.graphics.print("\n"..ys.." rects vertically")
-	love.graphics.print("\n\n"..xs.." rects horizontally")
+	drawOverlay()
 end
 
 -- Draws everything using DEEP
@@ -48,10 +44,17 @@ function deepdraw()
 	-- Draw everything in the queue
 	deep:drawAll()
 
-	-- FPS timer to check performance
+	drawOverlay()
+end
+
+function drawOverlay()
+	love.graphics.setColor(255, 255, 255)
+	love.graphics.rectangle("fill", 0, 0, 150, 60)
+	love.graphics.setColor(0, 0, 0)
 	love.graphics.print(love.timer.getFPS().."FPS")
 	love.graphics.print("\n"..ys.." rects vertically")
 	love.graphics.print("\n\n"..xs.." rects horizontally")
+	love.graphics.print("\n\n\nDEEP:"..tostring(shouldDrawWithDeep))
 end
 
 function love.draw()
@@ -67,7 +70,9 @@ function randColor()
 end
 
 function love.keypressed(key)
-	if key == "escape" then
+	if key == "space" then
+		shouldDrawWithDeep = not shouldDrawWithDeep
+	elseif key == "escape" then
 		love.event.quit()
 	elseif key == "up" then
 		ys = ys + 10

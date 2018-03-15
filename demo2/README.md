@@ -8,7 +8,7 @@ Vertical arrow keys change the value of y and the horizontal ones change x.
 
 This demo is to test fps decrease when using DEEP when drawing hundreds of objects in each frame.
 
-**Benchmark #1**
+### Benchmark #1
 Mobile 2nd generation Intel i5 with 8gb RAM and an Nvidia GT 520M. 
 Considered weak by 2018's standarts.
 
@@ -19,7 +19,7 @@ DEEP reaches 1 fps at `x = 58` and `y = 78`
 What that means is, if you're going to be drawing 14136 different objects each frame, deep will 
 decrease performance 3.12 times. 
 
-**Benchmark #2**
+### Benchmark #2
 Intel i7 2600k with 12gb RAM and an Nvidia GTX 1060 (3gb). 
 Considered high-end by 2018's standarts.
 
@@ -30,7 +30,7 @@ Drawing with DEEP, it reached 1 fps at `x = 76` and `y = 76`
 This time the performance decreased 3.25 times
 
 
-**Summary**
+### Summary
 Using these two vastly different benchmarks, we can estimate that when drawing tens of thousands of 
 objects at at time, the performance of the game will slow down by 318%
 

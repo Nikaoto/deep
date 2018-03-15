@@ -4,6 +4,8 @@
 package.path = package.path .. ";../?.lua"
 local deep = require "deep"
 
+local shouldDrawWithDeep = true
+
 function love.load()
 	love.window.setFullscreen(true)
 	width, height = love.graphics.getDimensions()
@@ -53,8 +55,11 @@ function deepdraw()
 end
 
 function love.draw()
-	deepdraw()
-	--lovedraw()
+	if shouldDrawWithDeep then
+		deepdraw()
+	else
+	 	lovedraw()
+	end
 end
 
 function randColor()

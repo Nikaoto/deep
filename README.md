@@ -146,19 +146,19 @@ you check out each one of them to learn about the various edge cases and details
 Here's what demo1 does:
 ![demo](https://i.imgur.com/jRJXcZL.gif)
 
+<br><br>
 
-
-## TODO
+# TODO
 //TODO add License
 
 *Drawing techniques that I plan to add to deep* 
 
-* love.graphics.arc - deep.graphics.arc
-* love.graphics.clear- deep.graphics.clear
-* love.graphics.line- deep.graphics.line *works only when drawing one line*
-* love.graphics.points- deep.graphics.points
-* love.graphics.polygon- deep.graphics.polygon
-* love.graphics.stencil- deep.graphics.stencil
+* `love.graphics.arc` - `deep.graphics.arc`
+* `love.graphics.clear` - `deep.graphics.clear`
+* `love.graphics.line` - `deep.graphics.line` *works only when drawing one line*
+* `love.graphics.points` - `deep.graphics.points`
+* `love.graphics.polygon` - `deep.graphics.polygon`
+* `love.graphics.stencil` - `deep.graphics.stencil`
 * negative z axii
 * particle effects
 * support for other popular graphical libraries for LOVE2D

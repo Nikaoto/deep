@@ -1,9 +1,11 @@
-# deep
-Is a library for [**LÖVE2D**](https://love2d.org) that adds the Z axis.
+**deep** is a library for [**LÖVE2D**](https://love2d.org) that adds the Z axis.
 
-**deep** frees you from the tedious task of rearranging your drawing order and allows you
+It frees you from the tedious task of rearranging your drawing order and allows you
 to simply specify the z axis when drawing objects.
 
+//TODO add reasons for using deep
+
+//TODO add reasons for avoiding deep
 
 ## Usage
 To use deep in your lua files, at the beginning of the file, simply do:

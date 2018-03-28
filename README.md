@@ -1,7 +1,7 @@
 # deep
 Is a library for [**LÖVE2D**](https://love2d.org) that adds the Z axis.
 
-deep frees you from the tedious task of rearranging your drawing order and allows you
+**deep** frees you from the tedious task of rearranging your drawing order and allows you
 to simply specify the z axis when drawing objects.
 
 
@@ -94,7 +94,7 @@ applied.
 #### `deep:circle(mode, x, y, z, segments)`
 *Equivalent to love.graphics.circle()*
 
-<br><br>
+<br>
 
 ## Color overriding
 
@@ -122,6 +122,7 @@ Color overriding works with every draw function that is also affected by love.gr
 
 ***NOTE:** When overriding colors, the color must be passed as a table*
 
+<br>
 
 ## Defaults
 
@@ -135,7 +136,9 @@ deep:print("Hello!", 10, 10) -- Drawing at x = 10, y = 10
 
 The z argument is skipped as you can see, so it will be defaulted to `defaults.z`
 
-## Demos
+<br><br>
+
+# Demos
 The demo files have small examples of how deep's different functions should be used. I suggest 
 you check out each one of them to learn about the various edge cases and details of deep.
 

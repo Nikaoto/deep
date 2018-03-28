@@ -24,6 +24,7 @@ deep's functions work exactly like their love.graphics counterparts.
 ***NOTE2:** draw order on the same z axis works just like the traditional draw order in LOVE2D: 
 each draw call draws over the previous ones*
 
+<br><br>
 
 # Documentation
 

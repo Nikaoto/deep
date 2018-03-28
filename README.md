@@ -32,7 +32,7 @@ each draw call draws over the previous ones*
 // TODO add drawcall order explanation
 
 ---
-### `deep:drawAll()`
+#### `deep:drawAll()`
 *The heart of the library*
 
 Draws every object inside the draw queue. Always do this at the end of `love.draw()`.
@@ -42,7 +42,7 @@ Inversely, anything you directly draw before calling `deep:drawAll()` will be dr
 <br>
 
 ---
-### `deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)`
+#### `deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)`
 *Equivalent to love.graphics.draw()*
 
 // TODO: add argument list
@@ -60,7 +60,7 @@ The same applies to every function in deep.
 <br>
 
 ---
-### `deep:setColor()`
+#### `deep:setColor()`
 *Equivalent to love.graphics.setColor()*
 
 Has a couple of variations:
@@ -73,25 +73,25 @@ applied.
 <br>
 
 ---
-### `deep:rectangle(mode, x, y, z, width, height)`
+#### `deep:rectangle(mode, x, y, z, width, height)`
 *Equivalent to love.graphics.rectangle()*
 
 <br>
 
 ---
-### `deep:print(text)`
+#### `deep:print(text)`
 *Equivalent to love.graphics.print()*
 
 <br>
 
 ---
-### `deep:ellipse(mode, x, y, z, rediusx, radiusy)`
+#### `deep:ellipse(mode, x, y, z, rediusx, radiusy)`
 *Equivalent to love.graphics.ellipse()*
 
 <br>
 
 ---
-### `deep:circle(mode, x, y, z, segments)`
+#### `deep:circle(mode, x, y, z, segments)`
 *Equivalent to love.graphics.circle()*
 
 <br><br>

@@ -32,7 +32,6 @@ each draw call draws over the previous ones*
 // TODO add drawcall order explanation
 
 ---
-
 ### `deep:drawAll()`
 *The heart of the library*
 
@@ -40,8 +39,9 @@ Draws every object inside the draw queue. Always do this at the end of `love.dra
 Everything you draw directly after calling `deep:drawAll()` will be drawn over your queue. 
 Inversely, anything you directly draw before calling `deep:drawAll()` will be drawn under the queue.
 
----
+<br>
 
+---
 ### `deep:draw(drawable, x, y, z, r, sx, sy, ox, oy, kx, ky)`
 *Equivalent to love.graphics.draw()*
 
@@ -57,8 +57,9 @@ deep:draw(player.sprite, player.x, player.y, player.z)
 
 The same applies to every function in deep.
 
----
+<br>
 
+---
 ### `deep:setColor()`
 *Equivalent to love.graphics.setColor()*
 
@@ -69,27 +70,30 @@ applied.
 * **deep:setColor(color)** - Takes RGBA values from a table (ex: `deep:setColor({255, 0, 100})`)
 * **deep:setColor()** - When no arguments are passed, deep resets the color to white
 
----
+<br>
 
+---
 ### `deep:rectangle(mode, x, y, z, width, height)`
 *Equivalent to love.graphics.rectangle()*
 
----
+<br>
 
+---
 ### `deep:print(text)`
 *Equivalent to love.graphics.print()*
 
----
+<br>
 
+---
 ### `deep:ellipse(mode, x, y, z, rediusx, radiusy)`
 *Equivalent to love.graphics.ellipse()*
 
----
+<br>
 
+---
 ### `deep:circle(mode, x, y, z, segments)`
 *Equivalent to love.graphics.circle()*
 
----
 <br><br>
 
 ## Color overriding

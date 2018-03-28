@@ -42,10 +42,6 @@ function love.update(dt)
 	local dx = getInput("right") - getInput("left")
 	local dy = getInput("down") - getInput("up")
 	player:move(dx * vel, dy * vel)
-
-	if love.keyboard.isDown("space") then
-		deep:clear()
-	end
 end
 
 function love.keypressed(key)

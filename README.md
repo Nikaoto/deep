@@ -1,11 +1,8 @@
+# deep
 **deep** is a library for [**LÖVE2D**](https://love2d.org) that adds the Z axis.
 
 It frees you from the tedious task of rearranging your drawing order and allows you
 to simply specify the z axis when drawing objects.
-
-//TODO add reasons for using deep
-
-//TODO add reasons for avoiding deep
 
 ## Usage
 To use deep in your lua files, at the beginning of the file, simply do:
@@ -14,16 +11,18 @@ To use deep in your lua files, at the beginning of the file, simply do:
 deep = require "deep"
 ```
 
+// TODO add inline demo
+
 Drawing objects with deep is straightforward - inside `love.draw()`, queue your objects up and 
 then call `deep:drawAll()`.
 
 To queue up your objects, simply use the listed functions like you would use their love versions.
 
-deep's functions work exactly like their love.graphics counterparts.
+Deep's functions work exactly like their love.graphics counterparts.
 
-***NOTE:** only use z axis values of 0 and above. deep does not support negative axis values for now.*
+**NOTE:** only use z axis values of 0 and above.*
 
-***NOTE2:** draw order on the same z axis works just like the traditional draw order in LOVE2D: 
+**NOTE2:** draw order on the same z axis works just like the traditional draw order in LOVE2D: 
 each draw call draws over the previous ones*
 
 <br><br>
@@ -32,14 +31,14 @@ each draw call draws over the previous ones*
 
 ## Drawing
 
-// TODO add drawcall order explanation
+Deep works by queuing each drawcall you make and then drawing them all according to their z axis. 
+I suggest tying each object's z coordinate to its y value.
 
 ---
 #### `deep:drawAll()`
-*The heart of the library*
 
-Draws every object inside the draw queue. Always do this at the end of `love.draw()`.
-Everything you draw directly after calling `deep:drawAll()` will be drawn over your queue. 
+Draws every object inside the draw queue. Call this at the end of your `love.draw()` function.
+Everything you draw directly with love after calling `deep:drawAll()` will be drawn over your queue. 
 Inversely, anything you directly draw before calling `deep:drawAll()` will be drawn under the queue.
 
 <br>

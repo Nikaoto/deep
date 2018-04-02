@@ -13,7 +13,7 @@ deep.queue = function(z, fun)
   end
 end
 
-deep.drawAll = function()
+deep.execute = function()
   for i = 1, maxZ do   
     if drawQueue[i] then
       for _, fun in pairs(drawQueue[i]) do

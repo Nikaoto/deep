@@ -1,20 +1,21 @@
 local deep = {}
 
 local drawQueue = {}
-local maxZ = 1
+local maxIndex = 1
 
-deep.queue = function(z, fun)
-  if z > maxZ then maxZ = z end
+deep.queue = function(i, fun)
+  if i < 1 then i = 1 end
+  if i > maxIndex then maxIndex = i end
 
-  if drawQueue[z] == nil then
-    drawQueue[z] = {fun}
+  if drawQueue[i] == nil then
+    drawQueue[i] = {fun}
   else
-    table.insert(drawQueue[z], fun)
+    table.insert(drawQueue[i], fun)
   end
 end
 
 deep.execute = function()
-  for i = 1, maxZ do   
+  for i = 1, maxIndex do   
     if drawQueue[i] then
       for _, fun in pairs(drawQueue[i]) do
         fun()

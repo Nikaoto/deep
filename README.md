@@ -1,4 +1,15 @@
-# deep
+```
+  __                         
+ /\ \                          
+ \_\ \     __     __   _____   
+ /'_` \  /'__`\ /'__`\/\ '__`\ 
+/\ \L\ \/\  __//\  __/\ \ \L\ \
+\ \___,_\ \____\ \____\\ \ ,__/
+ \/__,_ /\/____/\/____/ \ \ \/ 
+                         \ \_\ 
+                          \/_/ 
+```
+
 **deep** is a tiny library for queuing and executing actions in sequence. 
 
 This functionality can be used in multiple ways, one of which is for [**LÖVE**](https://love2d.org),
@@ -49,13 +60,13 @@ Usage:
 
 * With anonymous functions: `deep.queue(400, function() hit(iron, 100) end)`
 
-* With named functions: `deep.queue(400, hit, iron, 100))`
+* With named functions: `deep.queue(400, hit, iron, 100)`
 
 * With multiple functions:
 	```lua
 	deep.queue(1, function()
-		print("Hello")
-		print("World")
+	  print("Hello")
+	  print("World")
 	end)
 	```
 ---

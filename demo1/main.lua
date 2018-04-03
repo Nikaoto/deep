@@ -21,11 +21,12 @@ function love.load()
 		speed = 350,
 		x = 100,
 		y = 100,
+		z = 3,
+		move = function (self, x, y)
+			player.x = player.x + x
+			player.y = player.y + y	
+		end
 	}
-	function player:move(x, y)
-		player.x = player.x + x
-		player.y = player.y + y
-	end
 end
 
 -- For getting player input
@@ -38,51 +39,73 @@ end
 
 -- Handling player controls
 function love.update(dt)
-	local vel = player.speed * dt
-	local dx = getInput("right") - getInput("left")
-	local dy = getInput("down") - getInput("up")
-	player:move(dx * vel, dy * vel)
+	local dx, dy = 0, 0
+	if love.keyboard.isDown("up") then
+		dy = dy - player.speed * dt
+	end
+
+	if love.keyboard.isDown("down") then
+		dy = dy + player.speed * dt
+	end
+
+	if love.keyboard.isDown("left") then
+		dx = dx - player.speed * dt
+	end
+
+	if love.keyboard.isDown("right") then
+		dx = dx + player.speed * dt
+	end
+
+	player:move(dx, dy)
 end
 
+-- W and S used to move player through layers
 function love.keypressed(key)
 	if key == "escape" then
 		love.event.quit()
+	elseif key == "w" then
+		player.z = player.z - 1
+	elseif key == "s" then
+		player.z = player.z + 1
 	end
 end
 
 function love.draw()
 	-- Queue up four objects and draw them 50 times
-	-- Take note of the last argument of deep:draw - (the z axis); 
-	-- green cubes are at 1, blues at 3, and the player at 2
+	-- Take note of the first argument of deep.queue - (the z axis); 
 	for i = 1, 100, 2 do
-		deep:draw(blueSquare.sprite, blueSquare.x + i*2, blueSquare.y - i*2, 4)
-		deep:draw(greenSquare.sprite, blueSquare.x - i*2, blueSquare.y - i*2, 1)
-		deep:draw(greenSquare.sprite, greenSquare.x - i*2, greenSquare.y - i*2, 1)
-		deep:draw(blueSquare.sprite, greenSquare.x + i*2, greenSquare.y - i*2, 4)
+		deep.queue(4, love.graphics.draw, blueSquare.sprite, blueSquare.x + i*2, blueSquare.y - i*2)
+		deep.queue(2, love.graphics.draw, greenSquare.sprite, blueSquare.x - i*2, blueSquare.y - i*2)
+		deep.queue(2, love.graphics.draw, greenSquare.sprite, greenSquare.x - i*2, greenSquare.y - i*2)
+		deep.queue(4, love.graphics.draw, blueSquare.sprite, greenSquare.x + i*2, greenSquare.y - i*2)
 	end
 
-	-- deep:setColor() works just like love.graphics.setColor(). The color needs to be set 
-	-- before queuing instead of drawing
-	deep:setColor(255, 255, 0) -- Yellow
+	-- Queueing multiple actions is perfect for setting colors
 	for i = 1, 100, 2 do
-		deep:rectangle("fill", 50 + i*6, 210 + i, 5, 50, 50)
+		deep.queue(5, function() 
+			love.graphics.setColor(1, 1, 0) -- Yellow
+			love.graphics.rectangle("fill", 50 + i*6, 210 + i, 50, 50)
+			love.graphics.setColor(1, 1, 1) -- Reset to white
+		end)
 	end
 	
-	-- You can also override the current color by calling any draw function 
-	-- with a capital 'C' at the end
+	-- This method is NOT recommended. Negatively affects performance and code readability.
+	-- Use deep like the the previous loop uses when specifying the same Z index
 	for i = 1, 100, 2 do
-		deep:rectangleC({255, 180, 20}, "fill", 50 + i*6, 110 + i, 3, 50, 50) -- Orange
+		deep.queue(3, love.graphics.setColor, 1, 0.647, 0) -- Orange
+		deep.queue(3, love.graphics.rectangle, "fill", 50 + i*6, 110 + i, 50, 50)
+		deep.queue(3, love.graphics.setColor, 1, 1, 1) -- Reset to white
 	end
 
 	-- Queue up the player
-	deep:draw(player.sprite, player.x, player.y, 3)
+	deep.queue(player.z, love.graphics.draw, player.sprite, player.x, player.y)
 
 	-- Draw everything in the queue
-	deep:drawAll()
+	deep.execute()
 	--Notice how the queue order is mixed up, but everything gets drawn according to their Z axis
 
 	-- FPS timer to check performance
-	-- (anything drawn directly will depend on the draw call being before or after deep:draw())
+	-- (anything drawn directly will depend on the draw call being before or after deep.execute())
 	love.graphics.print(love.timer.getFPS().."FPS")
-	-- Because this draw call is after deep:drawAll() it draws over everything
+	-- Because this draw call is after deep.execute() it draws over everything
 end

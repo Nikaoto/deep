@@ -3,14 +3,34 @@ local deep = {}
 local execQueue = {}
 local maxIndex = 1
 
-deep.queue = function(i, fun)
+deep.queue = function(i, fun, ...)
+  if i == nil then
+    print("Error: deep.queue(): passed index is nil")
+    return nil
+  end
+
+  if fun == nil then
+    print("Error: deep.queue(): passed function is nil")
+    return nil
+  end
+  --
+
+  local arg = { ... }
   if i < 1 then i = 1 end
   if i > maxIndex then maxIndex = i end
 
-  if execQueue[i] == nil then
-    execQueue[i] = {fun}
+  if arg and #arg > 0 then
+    if execQueue[i] == nil then
+      execQueue[i] = { function() return fun(unpack(arg)) end }
+    else
+      table.insert(execQueue[i], t)
+    end
   else
-    table.insert(execQueue[i], fun)
+    if execQueue[i] == nil then
+      execQueue[i] = { fun }
+    else
+      table.insert(execQueue[i], fun)
+    end
   end
 end
 

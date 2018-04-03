@@ -42,7 +42,7 @@ function love.draw()
   love.graphics.print("current_z is "..current_z)
 end
 
--- Increases/decreases player z on key press
+-- Increases/decreases current_z (of the red square) on key press
 function love.keypressed(key)
   if key == "up" then
     current_z = current_z - 1

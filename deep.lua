@@ -38,7 +38,7 @@ deep.queue = function(i, fun, ...)
 end
 
 deep.execute = function()
-  for i = 1, maxIndex do   
+  for i = 1, maxIndex do
     if execQueue[i] then
       for _, fun in pairs(execQueue[i]) do
         fun()

@@ -11,14 +11,14 @@ Place `deep.lua` inside your project and require it:
 deep = require "deep"
 ```
 
-### Queue actions
+## Queue actions
 ```lua
 deep.queue(3, print, "wound!")
 deep.queue(1, print, "It's just")
 deep.queue(2, print, "a flesh")
 ```
 
-### Execute
+## Execute
 ```lua
 deep.execute()
 ```
@@ -31,7 +31,7 @@ wound!
 
 # Documentation
 
-## `deep.queue(i, fun, ...)`
+### `deep.queue(i, fun, ...)`
 Queues a function for execution at index `i`
 
 ```lua
@@ -43,7 +43,7 @@ Arguments:
 * `fun` `(function)` - An anonymous or named function
 * `...` `(*)` - The arguments of the passed named function
 
-### There are two ways to queue actions:
+#### There are two ways to queue actions:
 * Using anonymous functions:
 ```lua
 deep.queue(400, function() hit(iron, 100) end)
@@ -54,7 +54,7 @@ deep.queue(400, function() hit(iron, 100) end)
 deep.queue(400, hit, iron, 100)
 ```
 
-### Queuing multiple actions
+#### Queuing multiple actions
 Simply use an anonymous function:
 ```lua
 deep.queue(1, function()
@@ -64,7 +64,7 @@ end)
 ```
 ---
 
-## `deep:execute()`
+### `deep:execute()`
 Executes all of the queued actions.
 
 ```lua

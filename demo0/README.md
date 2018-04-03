@@ -13,4 +13,8 @@ local deep = require "../deep"
 ```
 
 It's only meant for reaching `deep.lua` from a child directory. You probably don't need to use this 
-and can stick to simply `deep = require "lib/deep"` (lib is where one places libraries, by standard)
+and can stick to simply 
+```lua 
+deep = require "lib/deep"
+```
+(the lib directory is where libraries are placed by standard)

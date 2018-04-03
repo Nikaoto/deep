@@ -23,8 +23,10 @@ deep.queue = function(i, fun, ...)
   if i > maxIndex then maxIndex = i end
 
   if arg and #arg > 0 then
+    local t = function() return fun(unpack(arg)) end
+
     if execQueue[i] == nil then
-      execQueue[i] = { function() return fun(unpack(arg)) end }
+      execQueue[i] = { t }
     else
       table.insert(execQueue[i], t)
     end

@@ -1,4 +1,4 @@
-# Demo 2
+# Demo 2 [ OUTDATED, NEEDS UPDATING AFTER MAJOR CHANGE ]
 
 ![demo2-deep](https://i.imgur.com/pv65wx2.png)
 

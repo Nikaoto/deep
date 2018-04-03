@@ -1,86 +1,52 @@
--- main.lua
--- Demonstrates how DEEP can be used for 2.5D games
 package.path = package.path .. ";../?.lua"
 local deep = require "../deep"
 --
 
-function love.load()
-	Y_MOVE_MOD = 0.85 -- For the illusion of moving forward or backward, slows vertical movement
-
-	player = {
-		speed = 350,
-		x = 300,
-		y = 80,
-		z = 180,
-		width = 80,
-		height = 80
-	}
-end
-
--- Handling player controls
-function love.update(dt)
-	local dx = 0
-	local dy = 0
-
-	if love.keyboard.isDown("up") then
-		dy = dy - player.speed * dt * Y_MOVE_MOD
-	end
-
-	if love.keyboard.isDown("down") then
-		dy = dy + player.speed * dt * Y_MOVE_MOD
-	end
-
-	if love.keyboard.isDown("left") then
-		dx = dx - player.speed * dt
-	end
-
-	if love.keyboard.isDown("right") then
-		dx = dx + player.speed * dt
-	end
-
-	player.x = player.x + dx
-	player.y = player.y + dy
-	player.z = math.ceil(player.y + player.height)
-	-- adding player.height basically sets the z to be where the square stands
-	-- generally, you'd want to add the object's origin y instead of height here
-end
+local current_z = 2
+local rect = {
+  x = 200,
+  width = 300,
+  height = 50  
+}
 
 function love.draw()
-	-- (color, mode, x, y, z, width, height)
-	deep.queue(150, function()
-		love.graphics.setColor(1, 1, 0)
-		love.graphics.rectangle("fill", 0, 100, 500, 50)
-	end)
+  -- Queue a green rectangle draw call (x = 200, y = 60, z = 2)
+  deep.queue(2, function()
+    love.graphics.setColor(0, 255, 0)
+    love.graphics.rectangle("fill", rect.x, 60, rect.width, rect.height)
+  end)
 
-	deep.queue(190, function()
-		love.graphics.setColor(0, 1, 0)
-		love.graphics.rectangle("fill", 300, 140, 500, 50)
-	end)
+  -- Yellow rectangle. Execution index (3) affects draw order, so it acts just like the z coordinate
+  deep.queue(3, function()
+    love.graphics.setColor(255, 255, 0)
+    love.graphics.rectangle("fill", rect.x, 100, rect.width, rect.height)
+  end)
 
-	-- Blue
-	deep.queue(230, function()
-		love.graphics.setColor(0, 0, 1)
-		love.graphics.rectangle("fill", 0, 180, 500, 50)
-	end)
+  -- Blue rectangle
+  deep.queue(4, function()
+    love.graphics.setColor(0, 0, 255)
+    love.graphics.rectangle("fill", rect.x, 140, rect.width, rect.height)
+  end)
 
-	-- Cyan
-	deep.queue(270, function()
-		love.graphics.setColor(0, 1, 1)
-		love.graphics.rectangle("fill", 300, 220, 500, 50)
-	end)
+  -- Red square, which can move through the z axis
+  deep.queue(current_z, function()
+    love.graphics.setColor(255, 0, 0)
+    love.graphics.rectangle("fill", 300, 80, 80, 80) -- (type, x, y, width, height)
+  end)
+  
+  -- Draw everything in the queue
+  deep.execute()
 
-	-- Queue the player (red cube)
-	deep.queue(player.z, function()
-		love.graphics.setColor(1, 0, 0)
-		love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
-	end)
-	
-	-- Draw everything in the queue
-	deep.execute()
+  -- Draw the current z index on top-left of the screen
+  love.graphics.setColor(255, 255, 255)
+  love.graphics.print("current_z is "..current_z)
 end
 
+-- Increases/decreases current_z (of the red square) on key press
 function love.keypressed(key)
-	if key == "escape" then
-		love.event.quit()
-	end
+  if key == "up" then
+    current_z = current_z - 1
+  elseif key == "down" then
+    current_z = current_z + 1
+  end
 end

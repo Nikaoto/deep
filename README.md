@@ -6,6 +6,8 @@
 ██████╔╝███████╗███████╗██║     
 ╚═════╝ ╚══════╝╚══════╝╚═╝     
 ```
+[![Lua](https://img.shields.io/badge/Lua-5.0+-000080.svg)](https://lua.org)
+[![LOVE](https://img.shields.io/badge/L%C3%96VE-11.0-EA316E.svg)](http://love2d.org/)
 
 **deep** is a tiny library for queuing and executing actions in sequence. 
 
@@ -103,7 +105,7 @@ local current_z = 1
 
 -- Draws a horizontal line at passed y coordinate
 local function draw_rectangle(y)
-  love.graphics.setColor(255, 255, 255) -- Set color to white
+  love.graphics.setColor(1, 1, 1) -- Set color to white
   love.graphics.rectangle("fill", 200, y, 300, 10) -- Draw thin rectangle
 end
 
@@ -115,7 +117,7 @@ function love.draw()
 
   -- Red square, which can move through z axis
   deep.queue(current_z, function()
-    love.graphics.setColor(255, 0, 0) -- Set color to red
+    love.graphics.setColor(1, 0, 0) -- Set color to red
     love.graphics.rectangle("fill", 300, 40, 80, 80)
   end)
 

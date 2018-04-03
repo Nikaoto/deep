@@ -92,7 +92,7 @@ deep.execute()
 # Examples
 Deep can be effectively used with any 2D graphics framework in lua to help with the drawing process.
 
-For example, with [**LÖVE**](https://love2d.org), one could add layers or a full isometric/2.5D 
+For example, with [**LÖVE**](https://love2d.org), one could add layers or a full isometric / 2.5D 
 drawing process to the framework:
 ![love2d z axis drawing example](https://i.imgur.com/yk2O1ao.gif)
 
@@ -136,8 +136,9 @@ end
 ```
 ---
 
-The demo files have small examples of how deep's different functions should be used. I suggest 
-you check out each one of them to learn about the various edge cases and details of deep.
+The demo files have small examples of how deep's different functions should be used. You should at 
+least look at the `README.md` of each demo to see what deep can do. If you intend to use deep, I 
+*highly* recommend you read some of the code as well.
 
-Here's what demo1 does:
-![demo](https://i.imgur.com/jRJXcZL.gif)
+Here's what demo0 does:
+![demo0 love2d 2.5D example](https://i.imgur.com/j5OJe46.gif)

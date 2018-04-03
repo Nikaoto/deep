@@ -1,8 +1,7 @@
--- main.lua
--- Demonstrates how DEEP can be used for 2.5D games
+-- demo0
+-- Demonstrates how DEEP can be used for drawing in 2.5D
 package.path = package.path .. ";../?.lua"
 local deep = require "../deep"
---
 
 function love.load()
 	Y_MOVE_MOD = 0.85 -- For the illusion of moving forward or backward, slows vertical movement

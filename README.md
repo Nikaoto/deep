@@ -36,6 +36,8 @@ Queues a function for execution at index `i`
 
 ```lua
 deep.queue(100, print, "Hello")
+-- or
+deep.queue(100, function() print("Hello") end)
 ```
 
 Arguments:
@@ -43,19 +45,13 @@ Arguments:
 * `fun` `(function)` - An anonymous or named function
 * `...` `(*)` - The arguments of the passed named function
 
-### Two ways to queue actions
-1. Using anonymous functions:
-```lua
-deep.queue(400, function() hit(iron, 100) end)
-```
+Usage:
 
-2. Using named functions:
-```lua
-deep.queue(400, hit, iron, 100)
-```
+* With anonymous functions: `deep.queue(400, function() hit(iron, 100) end)`
 
-#### Queuing multiple actions
-Simply use an anonymous function:
+* With named functions: `deep.queue(400, hit, iron, 100))`
+
+* With multiple functions:
 ```lua
 deep.queue(1, function()
 	print("Hello")

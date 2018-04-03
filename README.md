@@ -43,13 +43,13 @@ Arguments:
 * `fun` `(function)` - An anonymous or named function
 * `...` `(*)` - The arguments of the passed named function
 
-#### There are two ways to queue actions:
-* Using anonymous functions:
+### Two ways to queue actions
+1. Using anonymous functions:
 ```lua
 deep.queue(400, function() hit(iron, 100) end)
 ```
 
-* Using named functions:
+2. Using named functions:
 ```lua
 deep.queue(400, hit, iron, 100)
 ```

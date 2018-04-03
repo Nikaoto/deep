@@ -19,14 +19,14 @@ Place `deep.lua` inside your project and require it:
 deep = require "deep"
 ```
 
-## Queue actions
+### Queue actions
 ```lua
 deep.queue(3, print, "wound!")
 deep.queue(1, print, "It's just")
 deep.queue(2, print, "a flesh")
 ```
 
-## Execute
+### Execute
 ```lua
 deep.execute()
 ```
@@ -55,15 +55,21 @@ Arguments:
 
 Usage:
 
-* With anonymous functions: `deep.queue(400, function() hit(iron, 100) end)`
+* With anonymous functions: 
+	```lua
+	deep.queue(30, function() hit(iron, 100) end)
+	```
 
-* With named functions: `deep.queue(400, hit, iron, 100)`
+* With named functions: 
+	```lua
+	deep.queue(30, hit, iron, 100)
+	```
 
 * With multiple functions:
 	```lua
-	deep.queue(1, function()
-	  print("Hello")
-	  print("World")
+	deep.queue(30, function()
+	  hit(iron, 100)
+	  strike(steel, 200)
 	end)
 	```
 ---

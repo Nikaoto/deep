@@ -31,13 +31,11 @@ wound!
 
 # Documentation
 
-### `deep.queue(i, fun, ...)`
-Queues a function for execution at index i.
+## `deep.queue(i, fun, ...)`
+Queues a function for execution at index `i`
 
 ```lua
 deep.queue(100, print, "Hello")
--- can also be written as:
-deep.queue(100, function() print("Hello") end)
 ```
 
 Arguments:
@@ -45,25 +43,18 @@ Arguments:
 * `fun` `(function)` - An anonymous or named function
 * `...` `(*)` - The arguments of the passed named function
 
-
-#### There are two ways to queue actions:
-* Using anonymous functions
+### There are two ways to queue actions:
+* Using anonymous functions:
 ```lua
 deep.queue(400, function() hit(iron, 100) end)
 ```
 
-* Using named functions
+* Using named functions:
 ```lua
 deep.queue(400, hit, iron, 100)
 ```
 
-Do **not** place a function call in the `fun` argument:
-```lua
-deep.queue(10, print("Hi")) -- Will call print("Hi") directly and pass the returned value (nil)
-deep.execute() -- Does nothing, has nothing in queue
-```
-
-#### Queuing multiple actions
+### Queuing multiple actions
 Simply use an anonymous function:
 ```lua
 deep.queue(1, function()
@@ -73,7 +64,7 @@ end)
 ```
 ---
 
-### `deep:execute()`
+## `deep:execute()`
 Executes all of the queued actions.
 
 ```lua

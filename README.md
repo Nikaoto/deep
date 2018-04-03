@@ -81,7 +81,53 @@ deep.queue(math.random(10), print, "scratch!")
 deep.execute()
 ```
 
-# Demos
+# Examples
+Deep can be effectively used with any 2D graphics framework in lua to help with the drawing process.
+
+For example, with [**LÖVE**](https://love2d.org), one could add layers or a full isometric/2.5D 
+drawing process to the framework:
+![love2d z axis drawing example](https://i.imgur.com/yk2O1ao.gif)
+
+To achieve this, you could do the following: 
+```lua
+local deep = require "deep"
+
+-- The z index of the red cube
+local current_z = 1
+
+-- Draws a horizontal line at passed y coordinate
+local function draw_rectangle(y)
+  love.graphics.setColor(255, 255, 255) -- Set color to white
+  love.graphics.rectangle("fill", 200, y, 300, 10) -- Draw thin rectangle
+end
+
+function love.draw()
+  -- Queue the three horizontal lines
+  deep.queue(2, draw_rectangle, 60)
+  deep.queue(3, draw_rectangle, 80)
+  deep.queue(4, draw_rectangle, 100)
+
+  -- Red square, which can move through z axis
+  deep.queue(current_z, function()
+    love.graphics.setColor(255, 0, 0) -- Set color to red
+    love.graphics.rectangle("fill", 300, 40, 80, 80)
+  end)
+
+  -- Draw everything in the queue
+  deep.execute()
+end
+
+-- Increases/decreases red square z on key press
+function love.keypressed(key)
+  if key == "up" then
+    current_z = current_z + 1
+  elseif key == "down" then
+    current_z = current_z - 1
+  end
+end
+```
+---
+
 The demo files have small examples of how deep's different functions should be used. I suggest 
 you check out each one of them to learn about the various edge cases and details of deep.
 

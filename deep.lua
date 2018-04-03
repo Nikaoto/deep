@@ -1,29 +1,29 @@
 local deep = {}
 
-local drawQueue = {}
+local execQueue = {}
 local maxIndex = 1
 
 deep.queue = function(i, fun)
   if i < 1 then i = 1 end
   if i > maxIndex then maxIndex = i end
 
-  if drawQueue[i] == nil then
-    drawQueue[i] = {fun}
+  if execQueue[i] == nil then
+    execQueue[i] = {fun}
   else
-    table.insert(drawQueue[i], fun)
+    table.insert(execQueue[i], fun)
   end
 end
 
 deep.execute = function()
   for i = 1, maxIndex do   
-    if drawQueue[i] then
-      for _, fun in pairs(drawQueue[i]) do
+    if execQueue[i] then
+      for _, fun in pairs(execQueue[i]) do
         fun()
       end
     end
   end
 
-  drawQueue = {}
+  execQueue = {}
 end
 
 return deep

@@ -141,4 +141,5 @@ least look at the `README.md` of each demo to see what deep can do. If you inten
 *highly* recommend you read some of the code as well.
 
 Here's what demo0 does:
+
 ![demo0 love2d 2.5D example](https://i.imgur.com/j5OJe46.gif)

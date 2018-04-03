@@ -3,7 +3,7 @@ local deep = {
   _DESCRIPTION = "Allows for queuing and executing actions in sequence",
   _URL = "https://github.com/Nikaoto/deep",
   _LICENSE = [[
-  Copyright (c) 2018 Nikoloz Otiashvili
+  Copyright (c) 2017 Nikoloz Otiashvili
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal

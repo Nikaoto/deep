@@ -3,6 +3,9 @@ local deep = {}
 local execQueue = {}
 local maxIndex = 1
 
+-- for compatibility with Lua 5.1/5.2
+local unpack = rawget(table, "unpack") or unpack
+
 deep.queue = function(i, fun, ...)
   if i == nil then
     print("Error: deep.queue(): passed index is nil")

@@ -54,8 +54,8 @@ Usage:
 * With multiple functions:
 	```lua
 	deep.queue(1, function()
-	  print("Hello")
-	  print("World")
+		print("Hello")
+		print("World")
 	end)
 	```
 ---

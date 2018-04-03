@@ -28,7 +28,7 @@ function love.draw()
     love.graphics.rectangle("fill", rect.x, 60, rect.width, rect.height)
   end)
 
-  -- Yellow rectangle. Execution index affects draw order, so it acts just like the z coordinate
+  -- Yellow rectangle. Execution index (3) affects draw order, so it acts just like the z coordinate
   deep.queue(3, function()
     love.graphics.setColor(255, 255, 0)
     love.graphics.rectangle("fill", rect.x, 100, rect.width, rect.height)
@@ -40,7 +40,7 @@ function love.draw()
     love.graphics.rectangle("fill", rect.x, 140, rect.width, rect.height)
   end)
 
-  -- Player
+  -- Player (red square)
   deep.queue(player.z, function()
     love.graphics.setColor(255, 0, 0)
     love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)

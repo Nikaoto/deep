@@ -59,7 +59,7 @@ Simply use an anonymous function:
 ```lua
 deep.queue(1, function()
 	print("Hello")
-	print("World!")
+	print("World")
 end)
 ```
 ---
@@ -69,10 +69,10 @@ Executes all of the queued actions.
 
 ```lua
 -- Will execute the actions in random order
-deep.queue(math.random(10), function() print("'Tis'") end)
-deep.queue(math.random(10), function() print("but") end)
-deep.queue(math.random(10), function() print("a") end)
-deep.queue(math.random(10), function() print("scratch.") end)
+deep.queue(math.random(10), print, "'Tis")
+deep.queue(math.random(10), print, "but")
+deep.queue(math.random(10), print, "a")
+deep.queue(math.random(10), print, "scratch!")
 
 deep.execute()
 ```

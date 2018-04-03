@@ -52,16 +52,16 @@ Usage:
 * With named functions: `deep.queue(400, hit, iron, 100))`
 
 * With multiple functions:
-```lua
-deep.queue(1, function()
-	print("Hello")
-	print("World")
-end)
-```
+	```lua
+	deep.queue(1, function()
+	  print("Hello")
+	  print("World")
+	end)
+	```
 ---
 
 ### `deep:execute()`
-Executes all of the queued actions.
+Executes all of the queued actions
 
 ```lua
 -- Will execute the actions in random order

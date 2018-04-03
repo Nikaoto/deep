@@ -2,24 +2,12 @@ package.path = package.path .. ";../?.lua"
 local deep = require "../deep"
 --
 
-local player
-local rectangle
-
-function love.load()
-  player = {
-    x = 300,
-    y = 80,
-    z = 2,
-    width = 80,
-    height = 80
-  }
-
-  rect = {
-    x = 200,
-    width = 300,
-    height = 50  
-  }
-end
+local current_z = 2
+local rect = {
+  x = 200,
+  width = 300,
+  height = 50  
+}
 
 function love.draw()
   -- Queue a green rectangle draw call (x = 200, y = 60, z = 2)
@@ -40,25 +28,25 @@ function love.draw()
     love.graphics.rectangle("fill", rect.x, 140, rect.width, rect.height)
   end)
 
-  -- Player (red square)
-  deep.queue(player.z, function()
+  -- Red square, which can move through the z axis
+  deep.queue(current_z, function()
     love.graphics.setColor(255, 0, 0)
-    love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
+    love.graphics.rectangle("fill", 300, 80, 80, 80) -- (type, x, y, width, height)
   end)
   
   -- Draw everything in the queue
   deep.execute()
 
-  -- Draw player's z index on top-left of the screen
+  -- Draw the current z index on top-left of the screen
   love.graphics.setColor(255, 255, 255)
-  love.graphics.print("player.z: "..player.z)
+  love.graphics.print("current_z is "..current_z)
 end
 
 -- Increases/decreases player z on key press
 function love.keypressed(key)
   if key == "up" then
-    player.z = player.z - 1
+    current_z = current_z - 1
   elseif key == "down" then
-    player.z = player.z + 1
+    current_z = current_z + 1
   end
 end

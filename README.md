@@ -138,6 +138,6 @@ The example files have small demos of how deep's different functions should be u
 least look at the `README.md` of each example to see what deep can do. If you intend to use deep, I
 *highly* recommend you read some of the code as well.
 
-Here's what [example0](https://github.com/Nikaoto/deep/tree/master/examples/example1) does:
+Here's what [example0](https://github.com/Nikaoto/deep/tree/master/examples/example0) does:
 
 ![example0 love2d 2.5D example](https://i.imgur.com/j5OJe46.gif)

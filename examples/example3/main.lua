@@ -1,5 +1,5 @@
 -- example3
--- Press up to increase z and down to decrease
+-- Press up to increase z index and down to decrease
 package.path = package.path .. ";../../?.lua"
 local deep = require "../deep"
 
@@ -13,25 +13,25 @@ local rect = {
 function love.draw()
   -- Queue a green rectangle draw call (x = 200, y = 60, z = 2)
   deep.queue(2, function()
-    love.graphics.setColor(0, 255, 0)
+    love.graphics.setColor(0, 1, 0)
     love.graphics.rectangle("fill", rect.x, 60, rect.width, rect.height)
   end)
 
   -- Yellow rectangle. Execution index (3) affects draw order, so it acts just like the z coordinate
   deep.queue(3, function()
-    love.graphics.setColor(255, 255, 0)
+    love.graphics.setColor(1, 1, 0)
     love.graphics.rectangle("fill", rect.x, 100, rect.width, rect.height)
   end)
 
   -- Blue rectangle
   deep.queue(4, function()
-    love.graphics.setColor(0, 0, 255)
+    love.graphics.setColor(0, 0, 1)
     love.graphics.rectangle("fill", rect.x, 140, rect.width, rect.height)
   end)
 
   -- Red square, which can move through the z axis
   deep.queue(current_z, function()
-    love.graphics.setColor(255, 0, 0)
+    love.graphics.setColor(1, 0, 0)
     love.graphics.rectangle("fill", 300, 80, 80, 80) -- (type, x, y, width, height)
   end)
   
@@ -39,7 +39,7 @@ function love.draw()
   deep.execute()
 
   -- Draw the current z index on top-left of the screen
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(1, 1, 1)
   love.graphics.print("current_z is "..current_z)
 end
 

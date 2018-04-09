@@ -1,6 +1,6 @@
--- demo0
+-- example0
 -- Demonstrates how DEEP can be used for drawing in 2.5D
-package.path = package.path .. ";../?.lua"
+package.path = package.path .. ";../../?.lua"
 local deep = require "../deep"
 
 function love.load()

@@ -136,7 +136,7 @@ end
 ```
 ---
 
-The example files have small examples of how deep's different functions should be used. You should at
+The example files have small demos of how deep's different functions should be used. You should at
 least look at the `README.md` of each example to see what deep can do. If you intend to use deep, I
 *highly* recommend you read some of the code as well.
 

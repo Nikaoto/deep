@@ -1,4 +1,4 @@
--- main.lua
+-- example2
 -- Fills the screen with randomly colored rectangles
 -- Demonstrates how much impact DEEP has on performance
 package.path = package.path .. ";../?.lua"

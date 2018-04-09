@@ -1,6 +1,7 @@
-package.path = package.path .. ";../?.lua"
+-- example3
+-- Press up to increase z and down to decrease
+package.path = package.path .. ";../../?.lua"
 local deep = require "../deep"
---
 
 local current_z = 2
 local rect = {
@@ -44,7 +45,9 @@ end
 
 -- Increases/decreases current_z (of the red square) on key press
 function love.keypressed(key)
-  if key == "up" then
+  if key == "escape" then
+    love.event.quit()
+  elseif key == "up" then
     current_z = current_z - 1
   elseif key == "down" then
     current_z = current_z + 1

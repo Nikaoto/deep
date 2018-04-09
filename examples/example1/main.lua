@@ -1,6 +1,6 @@
--- main.lua
+-- example1
 -- Demonstrates how DEEP can be used effectively
-package.path = package.path .. ";../?.lua"
+package.path = package.path .. ";../../?.lua"
 local deep = require "../deep"
 
 -- Loading tables and sprites

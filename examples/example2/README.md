@@ -1,6 +1,6 @@
-# Demo 2 [ OUTDATED, NEEDS UPDATING AFTER MAJOR CHANGE ]
+# example2 [OUTDATED]
 
-![demo2-deep](https://i.imgur.com/pv65wx2.png)
+![example2-deep](https://i.imgur.com/pv65wx2.png)
 
 Draws 10x amount of rectangles horizontally and 10y vertically with random color each frame .
 

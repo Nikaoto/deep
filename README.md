@@ -6,7 +6,7 @@
 ██████╔╝███████╗███████╗██║     
 ╚═════╝ ╚══════╝╚══════╝╚═╝     
 ```
-[![Lua](https://img.shields.io/badge/Lua-5.0+-000080.svg)](https://lua.org)
+[![Lua](https://img.shields.io/badge/Lua-JIT/5.0+-000080.svg)](https://lua.org)
 [![LOVE](https://img.shields.io/badge/L%C3%96VE-11.0-EA316E.svg)](http://love2d.org/)
 
 **deep** is a tiny library for queuing and executing actions in sequence. 
@@ -136,10 +136,10 @@ end
 ```
 ---
 
-The demo files have small examples of how deep's different functions should be used. You should at 
-least look at the `README.md` of each demo to see what deep can do. If you intend to use deep, I 
+The example files have small examples of how deep's different functions should be used. You should at
+least look at the `README.md` of each example to see what deep can do. If you intend to use deep, I
 *highly* recommend you read some of the code as well.
 
-Here's what [demo0](https://github.com/Nikaoto/deep/tree/master/demo0) does:
+Here's what [example0](https://github.com/Nikaoto/deep/tree/master/examples/example1) does:
 
-![demo0 love2d 2.5D example](https://i.imgur.com/j5OJe46.gif)
+![example0 love2d 2.5D example](https://i.imgur.com/j5OJe46.gif)

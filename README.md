@@ -6,8 +6,6 @@
 ██████╔╝███████╗███████╗██║     
 ╚═════╝ ╚══════╝╚══════╝╚═╝     
 ```
-[![Lua](https://img.shields.io/badge/Lua-5.0+-000080.svg)](https://lua.org)
-[![LOVE](https://img.shields.io/badge/L%C3%96VE-11.0-EA316E.svg)](http://love2d.org/)
 
 **deep** is a tiny library for queuing and executing actions in sequence. 
 

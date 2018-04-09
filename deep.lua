@@ -32,16 +32,15 @@ local maxIndex = 1
 local unpack = rawget(table, "unpack") or unpack
 
 deep.queue = function(i, fun, ...)
-  if i == nil then
-    print("Error: deep.queue(): passed index is nil")
+  if type(i) ~= "number" then
+    print("Error: deep.queue(): passed index is not a number")
     return nil
   end
 
-  if fun == nil then
-    print("Error: deep.queue(): passed function is nil")
+  if type(fun) ~= "function" then
+    print("Error: deep.queue(): passed action is not a function")
     return nil
   end
-  --
 
   local arg = { ... }
   if i < 1 then i = 1 end

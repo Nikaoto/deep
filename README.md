@@ -10,7 +10,7 @@
 **deep** is a tiny library for queuing and executing actions in sequence. 
 
 This functionality can be used in multiple ways, one of which is for [**LÖVE**](https://love2d.org),
-where you can use the Z axis when drawing.
+where you can use the Z axis when drawing. It mimics a simple scene-graph that performs drawing in order.
 
 # Usage
 Place `deep.lua` inside your project and require it:
@@ -141,3 +141,7 @@ least look at the `README.md` of each example to see what deep can do. If you in
 Here's what [example0](https://github.com/Nikaoto/deep/tree/master/examples/example0) does:
 
 ![example0 love2d 2.5D example](https://i.imgur.com/j5OJe46.gif)
+
+You can also check out a small jam game I made with deep: https://github.com/nikaoto/shamen
+![Shamen preview](https://i.imgur.com/YOdBqGR.gif)
+

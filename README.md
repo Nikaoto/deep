@@ -74,7 +74,7 @@ Usage:
 	```
 ---
 
-### `deep:execute()`
+### `deep.execute()`
 Executes all of the queued actions
 
 ```lua

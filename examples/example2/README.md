@@ -34,12 +34,12 @@ This time the performance decreased 3.25 times
 Using these two vastly different benchmarks, we can estimate that when drawing tens of thousands of 
 objects at at time, the performance of the game will slow down by 318%
 
-Below 10 thousand items, the performance is great.
+Below 10 thousand items, the performance impact is insignificant.
 
 # Notes
 Please consider that the benchmarks were done in 2018.03.16 and might need updating. 
 
-In addition, no standart procedures were used to measure the performance, I just multiplied the 
+In addition, no standard procedures were used to measure the performance, I just multiplied the 
 rectangle counts when the program reached 1 fps and compared the numbers.
 
 *You can send a PR any time for updated and/or alternate benchmakrs*

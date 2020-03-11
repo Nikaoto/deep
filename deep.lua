@@ -44,8 +44,12 @@ deep.queue = function(i, fun, ...)
   end
 
   local arg = { ... }
-  if i < minIndex then minIndex = i end
-  if i > maxIndex then maxIndex = i end
+
+  if i < minIndex then
+    minIndex = i
+  elseif i > maxIndex then
+    maxIndex = i
+  end
 
   if arg and #arg > 0 then
     local t = function() return fun(unpack(arg)) end

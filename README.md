@@ -49,7 +49,7 @@ deep.queue(100, function() print("Hello") end)
 ```
 
 Arguments:
-* `i` `(number)` - The index of the action, must be positive.
+* `i` `(number)` - The index of the action. Can be negative or positive.
 * `fun` `(function)` - An anonymous or named function
 * `...` `(*)` - The arguments of the passed named function
 

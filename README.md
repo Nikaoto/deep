@@ -86,7 +86,8 @@ deep.queue(math.random(10), print, "scratch!")
 
 deep.execute()
 ```
-
+### `deep.force(i, func_table )`
+deep.force is an advanced low level function for forcing an array of functions onto queue.
 # Examples
 Deep can be effectively used with any 2D graphics framework in lua to help with the drawing process.
 

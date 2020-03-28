@@ -86,10 +86,18 @@ deep.queue(math.random(10), print, "scratch!")
 
 deep.execute()
 ```
-### `deep.force(i, func_table )`
-deep.force is an advanced low level function for forcing an array of functions onto queue.
-# Examples
-Deep can be effectively used with any 2D graphics framework in lua to help with the drawing process.
+### `deep.force(i, func_table)`
+Advanced low-level function that forces an array of functions onto the queue.
+```lua
+draw_funcs = { draw_func1, draw_func2, draw_func3, draw_func4, draw_func5}
+
+-- Forces all functions from draw_list onto the queue, and will call them without arguments.
+deep.force(3, draw_funcs)  -- forces onto queue at location "i"
+
+-- This function will run a lot faster than deep.queue when there are thousands of queuing functions
+-- at the same location. Especially useful for tile-rendering!
+```
+
 
 For example, with [**LÖVE**](https://love2d.org), one could add layers or a full isometric / 2.5D 
 drawing process to the framework:

@@ -25,7 +25,13 @@ local deep = {
   ]]
 }
 
-local execQueue = {}
+local execQueue = setmetatable( {}, 
+  {__index = function(t,k) 
+      t[k] = {} 
+      return t[k] 
+    end} 
+)
+
 local maxIndex = 1
 local minIndex = 1
 
@@ -53,20 +59,25 @@ deep.queue = function(i, fun, ...)
 
   if arg and #arg > 0 then
     local t = function() return fun(unpack(arg)) end
-
-    if execQueue[i] == nil then
-      execQueue[i] = { t }
-    else
       table.insert(execQueue[i], t)
-    end
   else
-    if execQueue[i] == nil then
-      execQueue[i] = { fun }
-    else
       table.insert(execQueue[i], fun)
-    end
   end
 end
+
+
+--[[
+deep.force:
+forces an array of functions onto index i.
+This is especially good for forcing static, repeatitive functions onto the queue;
+a good example being tiles that are always at the same Z position.
+]]
+deep.force = function(i, tabl)
+  assert( not execQueue[i], " index "..tostring(i).." in deep queue was already taken. Make sure to force functions in first!" )
+  execQueue[i] = tabl
+end
+
+
 
 deep.execute = function()
   for i = minIndex, maxIndex do

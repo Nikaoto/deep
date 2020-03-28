@@ -73,7 +73,11 @@ This is especially good for forcing static, repeatitive functions onto the queue
 a good example being tiles that are always at the same Z position.
 ]]
 deep.force = function(i, func_tabl)
-  assert( not execQueue[i], " index "..tostring(i).." in deep queue was already taken. Make sure to force functions in first!" )
+  if execQueue[i] then
+      print "Error: deep.force(): passed index already has functions queued"
+      return nil
+  end
+  
   execQueue[i] = func_tabl
   if i > maxIndex then
       maxIndex = i

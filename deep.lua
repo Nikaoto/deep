@@ -75,6 +75,11 @@ a good example being tiles that are always at the same Z position.
 deep.force = function(i, func_tabl)
   assert( not execQueue[i], " index "..tostring(i).." in deep queue was already taken. Make sure to force functions in first!" )
   execQueue[i] = func_tabl
+  if i > maxIndex then
+      maxIndex = i
+  elseif i < minIndex then
+      minIndex = i
+  end
 end
 
 

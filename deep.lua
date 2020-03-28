@@ -90,7 +90,7 @@ end
 
 deep.execute = function()
   for i = minIndex, maxIndex do
-    if execQueue[i] then
+    if next(execQueue[i] ~= nil) then
       for _, fun in pairs(execQueue[i]) do
         fun()
       end

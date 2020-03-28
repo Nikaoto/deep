@@ -72,9 +72,9 @@ forces an array of functions onto index i.
 This is especially good for forcing static, repeatitive functions onto the queue;
 a good example being tiles that are always at the same Z position.
 ]]
-deep.force = function(i, tabl)
+deep.force = function(i, func_tabl)
   assert( not execQueue[i], " index "..tostring(i).." in deep queue was already taken. Make sure to force functions in first!" )
-  execQueue[i] = tabl
+  execQueue[i] = func_tabl
 end
 
 

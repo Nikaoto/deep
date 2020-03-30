@@ -100,7 +100,7 @@ draw_funcs = { draw_func1, draw_func2, draw_func3, draw_func4, draw_func5 }
 deep.force(3, draw_funcs)  -- forces onto queue at location "i"
 ```
 This function will run a lot faster than deep.queue when there are thousands of queuing functions
-at the same location. Especially useful for tile-rendering!
+at the same location. Especially useful for tile-rendering, with tables using __call metamethod pointing to draw!
 
 ---
 

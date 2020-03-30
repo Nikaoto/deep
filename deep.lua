@@ -118,7 +118,12 @@ deep.execute = function()
     end
   end
 
-  execQueue = {}
+  execQueue = setmetatable( {}, 
+      {__index = function(t,k) 
+          t[k] = {} 
+          return t[k] 
+        end} 
+   )
 end
 
 return deep

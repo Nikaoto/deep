@@ -39,6 +39,7 @@ local minIndex = 1
 local unpack = rawget(table, "unpack") or unpack
 
 deep.queue = function(i, fun, ...)
+  -- If you don't care about careful calling, you can remove these if statements
   if type(i) ~= "number" then
     print("Error: deep.queue(): passed index is not a number")
     return nil
@@ -72,13 +73,32 @@ forces an array of functions onto index i.
 This is especially good for forcing static, repeatitive functions onto the queue;
 a good example being tiles that are always at the same Z position.
 ]]
-deep.force = function(i, func_tabl)
-  if execQueue[i] then
-      print "Error: deep.force(): passed index already has functions queued"
-      return nil
+deep.multi_queue = function(i, fun, arg_tabl)
+  -- If you don't care about careful calling, remove these if statements
+  if type(i) ~= "number" then
+    print  "Error: deep.multi_queue(): passed index is not a number"
+    return nil
+  end
+
+  if type(fun) ~= "function" then
+    print "Error: deep.multi_queue(): passed action is not a function"  
+    return nil
   end
   
-  execQueue[i] = func_tabl
+  if type(arg_table) ~= "table" then
+    print "Error: deep.multi_queue():  passed argument table is not a table"
+    return nil
+  end
+  -- Constructing loop function.
+  local multi_caller = function()
+    for _,v in pairs( arg_tabl ) do
+      fun( v ) 
+    end
+  end
+  
+  -- This way multi_queue can be used even if there are already values on the stack! :)
+  table.insert( execQueue[i], multi_caller )
+  
   if i > maxIndex then
       maxIndex = i
   elseif i < minIndex then
@@ -90,7 +110,8 @@ end
 
 deep.execute = function()
   for i = minIndex, maxIndex do
-    if next(execQueue[i] ~= nil) then
+    -- rawget will obtain index i without invoking __index
+    if rawget( execQueue, i ) then
       for _, fun in pairs(execQueue[i]) do
         fun()
       end

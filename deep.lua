@@ -26,8 +26,6 @@ local deep = {
 }
 
 local execQueue = {}
-local maxIndex = 1
-local minIndex = 1
 
 -- for compatibility with Lua 5.1/5.2
 local unpack = rawget(table, "unpack") or unpack
@@ -44,13 +42,7 @@ deep.queue = function(i, fun, ...)
   end
 
   local arg = { ... }
-
-  if i < minIndex then
-    minIndex = i
-  elseif i > maxIndex then
-    maxIndex = i
-  end
-
+  
   if arg and #arg > 0 then
     local t = function() return fun(unpack(arg)) end
 
@@ -69,15 +61,23 @@ deep.queue = function(i, fun, ...)
 end
 
 deep.execute = function()
-  for i = minIndex, maxIndex do
-    if execQueue[i] then
-      for _, fun in pairs(execQueue[i]) do
+  if next(execQueue) then
+    local keys = {}
+    
+    for k, v in pairs(execQueue) do
+      keys[#keys + 1] = k
+    end
+    
+    table.sort(keys)
+    
+    for k = 1, #keys do
+      for _, fun in ipairs(execQueue[keys[k]]) do
         fun()
       end
     end
+    
+    execQueue = {}
   end
-
-  execQueue = {}
 end
 
 return deep

@@ -71,8 +71,8 @@ deep.execute = function()
     table.sort(keys)
     
     for k = 1, #keys do
-      for _, fun in ipairs(execQueue[keys[k]]) do
-        fun()
+      for i = 1, #execQueue[keys[k]] do
+        execQueue[keys[k]][i]()
       end
     end
     

@@ -26,6 +26,7 @@ local deep = {
 }
 
 local execQueue = {}
+local execKeys = {}
 
 -- for compatibility with Lua 5.1/5.2
 local unpack = rawget(table, "unpack") or unpack
@@ -58,25 +59,22 @@ deep.queue = function(i, fun, ...)
       table.insert(execQueue[i], fun)
     end
   end
+  
+  table.insert(execKeys, i)
 end
 
 deep.execute = function()
   if next(execQueue) ~= nil then
-    local keys = {}
+    table.sort(execKeys)
     
-    for k, v in pairs(execQueue) do
-      keys[#keys + 1] = k
-    end
-    
-    table.sort(keys)
-    
-    for k = 1, #keys do
-      for i = 1, #execQueue[keys[k]] do
-        execQueue[keys[k]][i]()
+    for k = 1, #execKeys do
+      for i = 1, #execQueue[execKeys[k]] do
+        execQueue[execKeys[k]][i]()
       end
     end
     
     execQueue = {}
+    execKeys = {}
   end
 end
 

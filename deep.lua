@@ -61,7 +61,7 @@ deep.queue = function(i, fun, ...)
 end
 
 deep.execute = function()
-  if next(execQueue) then
+  if next(execQueue) ~= nil then
     local keys = {}
     
     for k, v in pairs(execQueue) do

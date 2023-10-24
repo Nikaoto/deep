@@ -5,6 +5,7 @@ package.path = package.path .. ";../?.lua"
 local deep = require "deep"
 
 local shouldDrawWithDeep = true
+local minz, maxz = 1, 700
 
 function love.load()
 	love.window.setFullscreen(true)
@@ -37,12 +38,15 @@ function deepdraw()
 
 	for x = 1, width, sw do
 		for y = 1, height, sh do
-			deep:rectangleC({randColor()}, "fill", x, y, 1, sw, sh)
+			deep.queue(math.random(minz, maxz), function()
+                              love.graphics.setColor(randColor())
+                              love.graphics.rectangle("fill", x, y, sw, sh)
+                        end)
 		end 
 	end
 
 	-- Draw everything in the queue
-	deep:drawAll()
+	deep.execute()
 
 	drawOverlay()
 end
@@ -66,7 +70,7 @@ function love.draw()
 end
 
 function randColor()
-	return math.random(0, 255), math.random(0, 255), math.random(0, 255)
+	return math.random(), math.random(), math.random()
 end
 
 function love.keypressed(key)

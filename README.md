@@ -145,3 +145,6 @@ Here's what [example0](https://github.com/Nikaoto/deep/tree/master/examples/exam
 You can also check out a small jam game I made with deep: https://github.com/nikaoto/shamen
 ![Shamen preview](https://i.imgur.com/YOdBqGR.gif)
 
+# Possible speed optimizations
+- Preallocate the queue with `table.new()` (only works in LuaJIT)
+- Clear the queue on each exec with `table.clear()` (only works in LuaJIT)

@@ -131,23 +131,26 @@ end
 The `example/` directory has a slightly more involved demonstration of deep.
 
 Run `love example` from the root of this repository to get this:
+
 ![movement example](https://i.imgur.com/j5OJe46.gif)
+
 
 # Games using deep
 
-## Shamen
+
+### Gnomber
+
+Available on Steam (soon, not yet): https://store.steampowered.com/app/2800770/Gnomber/
+
+![Gnomber preview](https://i.imgur.com/tOvE43p.gif)
+
+### Shamen
 
 A small jam game I with an older version of deep.
 
 Github source: https://github.com/nikaoto/shamen
 
 ![Shamen preview](https://i.imgur.com/YOdBqGR.gif)
-
-## Gnomber
-
-Available on Steam (soon, not yet): https://store.steampowered.com/app/2800770/Gnomber/
-
-![Gnomber preview](https://i.imgur.com/tOvE43p.gif)
 
 # Possible speed optimizations
 - Preallocate the queue with `table.new()` (only works in LuaJIT)

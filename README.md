@@ -35,10 +35,9 @@ wound!
 
 # Documentation
 
-### `deep:new() -> layer`
+### `deep:new()`
 
 Returns a new drawing layer that holds its own queue of actions (its z-axis).
-
 You can have multiple layers which get drawn one after the other, or not drawn at all:
 ```lua
 background_layer = deep:new()
@@ -60,15 +59,15 @@ end
 ```
 
 ### `layer:queue(z, fn)`
-Queues a function for execution at index `z`. `z` **must** be an integer. It can
+Queues a function for execution at index `z`, which **must** be an integer. It can
 be negative, positive or zero. Using a float or any other type here will not
 queue the action.
 
 ### `layer:restrict(z_from, z_to)`
-Used for culling drawcalls that don't fall into the given interval.
-
-This is basically a primitive way to do frustum-culling to optimize your performance.
-```
+Used for culling drawcalls that don't fall into the given z interval.This is
+basically a primitive way to do frustum-culling to optimize your performance.
+You most likely won't need this as you'll have your own way to cull objects.
+```lua
 function love.draw()
    -- This will get added to the queue, but because of the restrict statement,
    -- it won't get drawn when layer:draw() is called.
@@ -84,7 +83,7 @@ function love.draw()
 end
 ```
 
-# Examples
+# Simplest example
 ![love2d z axis drawing example](https://i.imgur.com/yk2O1ao.gif)
 
 To achieve this, you could do the following: 
@@ -127,18 +126,28 @@ function draw_strip(x, y)
    love.graphics.rectangle("fill", x, y, 300, 10)
 end
 ```
----
 
-The example files have small demos of how deep's different functions should be used. You should at
-least look at the `README.md` of each example to see what deep can do. If you intend to use deep, I
-*highly* recommend you read some of the code as well.
+# Movement example
+The `example/` directory has a slightly more involved demonstration of deep.
 
-Here's what [example0](https://github.com/Nikaoto/deep/tree/master/examples/example0) does:
+Run `love example` from the root of this repository to get this:
+![movement example](https://i.imgur.com/j5OJe46.gif)
 
-![example0 love2d 2.5D example](https://i.imgur.com/j5OJe46.gif)
+# Games using deep
 
-You can also check out a small jam game I made with deep: https://github.com/nikaoto/shamen
+## Shamen
+
+A small jam game I with an older version of deep.
+
+Github source: https://github.com/nikaoto/shamen
+
 ![Shamen preview](https://i.imgur.com/YOdBqGR.gif)
+
+## Gnomber
+
+Available on Steam (soon, not yet): https://store.steampowered.com/app/2800770/Gnomber/
+
+![Gnomber preview](https://i.imgur.com/tOvE43p.gif)
 
 # Possible speed optimizations
 - Preallocate the queue with `table.new()` (only works in LuaJIT)

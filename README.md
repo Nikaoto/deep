@@ -10,7 +10,7 @@
 **deep** is a tiny high-performance library that lets you add drawing layers and
 a Z axis to any graphics framework in Lua.
 
-# Usage
+## Usage
 After placing `deep.lua` inside your project:
 
 ```lua
@@ -33,7 +33,7 @@ a flesh
 wound!
 ```
 
-# Documentation
+## Documentation (just 3 functions)
 
 ### `deep:new()`
 
@@ -83,7 +83,7 @@ function love.draw()
 end
 ```
 
-# Example
+## Example
 ![love2d z axis drawing example](./example/simple.gif)
 
 To achieve this, you could do the following: 
@@ -127,7 +127,7 @@ function draw_strip(x, y)
 end
 ```
 
-# Movement example
+## Movement example
 The `example/` directory has a slightly more involved demonstration of deep.
 
 Run `love example` from the root of this repository to get this:
@@ -135,7 +135,7 @@ Run `love example` from the root of this repository to get this:
 ![movement example](./example/movement.gif)
 
 
-# Games using deep
+## Games using deep
 
 ### Gnomber
 Available on Steam (soon, not yet): https://store.steampowered.com/app/2800770/Gnomber/
@@ -149,6 +149,6 @@ Github source: https://github.com/nikaoto/shamen
 
 ![Shamen preview](./example/shamen.gif)
 
-# Possible speed optimizations
+## Possible speed optimizations
 - Preallocate the queue with `table.new()` (only works in LuaJIT)
 - Clear the queue on each exec with `table.clear()` (only works in LuaJIT)

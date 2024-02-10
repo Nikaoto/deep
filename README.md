@@ -7,30 +7,26 @@
 ╚═════╝ ╚══════╝╚══════╝╚═╝     
 ```
 
-**deep** is a tiny library for queuing and executing actions in sequence. 
-
-This functionality can be used in multiple ways, one of which is for [**LÖVE**](https://love2d.org),
-where you can use the Z axis when drawing. It mimics a simple scene-graph that performs drawing in order.
+**deep** is a tiny high-performance library that lets you add drawing layers and
+a Z axis to any graphics framework in Lua.
 
 # Usage
-Place `deep.lua` inside your project and require it:
+After placing `deep.lua` inside your project:
 
 ```lua
-deep = require "deep"
+deep = require("deep")
+layer = deep:new()
+
+-- Queue actions. These actions can be drawcalls or anything at all.
+layer:queue(3, function() print("wound!") end)
+layer:queue(1, function() print("It's just") end)
+layer:queue(2, function() print("a flesh") end)
+
+-- Execute all actions in the layer
+layer:draw()
 ```
 
-### Queue actions
-```lua
-deep.queue(3, print, "wound!")
-deep.queue(1, print, "It's just")
-deep.queue(2, print, "a flesh")
-```
-
-### Execute
-```lua
-deep.execute()
-```
-Prints:
+This will print:
 ```
 It's just
 a flesh
@@ -39,97 +35,96 @@ wound!
 
 # Documentation
 
-### `deep.queue(i, fun, ...)`
-Queues a function for execution at index `i`
+### `deep:new() -> layer`
 
+Returns a new drawing layer that holds its own queue of actions (its z-axis).
+
+You can have multiple layers which get drawn one after the other, or not drawn at all:
 ```lua
-deep.queue(100, print, "Hello")
--- or
-deep.queue(100, function() print("Hello") end)
+background_layer = deep:new()
+game_object_layer = deep:new()
+ui_layer = deep:new()
+
+function love.draw()
+   -- Queue the actions for drawing stuff
+   background_layer:queue(...)
+   game_object_layer:queue(...)
+   ui_layer:queue(...)
+
+   -- With this, we will have the ui drawing over the game_objects.
+   -- And both will be drawn in front of the background.
+   background_layer:draw()
+   game_object_layer:draw()
+   ui_layer:draw()
+end
 ```
 
-Arguments:
-* `i` `(number)` - The index of the action. Can be negative or positive.
-* `fun` `(function)` - An anonymous or named function
-* `...` `(*)` - The arguments of the passed named function
+### `layer:queue(z, fn)`
+Queues a function for execution at index `z`. `z` **must** be an integer. It can
+be negative, positive or zero. Using a float or any other type here will not
+queue the action.
 
-Usage:
+### `layer:restrict(z_from, z_to)`
+Used for culling drawcalls that don't fall into the given interval.
 
-* With anonymous functions: 
-	```lua
-	deep.queue(30, function() hit(iron, 100) end)
-	```
+This is basically a primitive way to do frustum-culling to optimize your performance.
+```
+function love.draw()
+   -- This will get added to the queue, but because of the restrict statement,
+   -- it won't get drawn when layer:draw() is called.
+   layer:queue(102, function() print("hi") end)
 
-* With named functions: 
-	```lua
-	deep.queue(30, hit, iron, 100)
-	```
-
-* With multiple functions:
-	```lua
-	deep.queue(30, function()
-	  hit(iron, 100)
-	  strike(steel, 200)
-	end)
-	```
----
-
-### `deep.execute()`
-Executes all of the queued actions
-
-```lua
--- Will execute the actions in random order
-deep.queue(math.random(10), print, "'Tis")
-deep.queue(math.random(10), print, "but")
-deep.queue(math.random(10), print, "a")
-deep.queue(math.random(10), print, "scratch!")
-
-deep.execute()
+   layer:restrict(100, 120)
+   
+   -- This will not get added to the queue
+   layer:queue(101, function() draw_something() end)
+   
+    -- Will not do anything, because we have no valid actions
+   layer:draw()
+end
 ```
 
 # Examples
-Deep can be effectively used with any 2D graphics framework in lua to help with the drawing process.
-
-For example, with [**LÖVE**](https://love2d.org), one could add layers or a full isometric / 2.5D 
-drawing process to the framework:
 ![love2d z axis drawing example](https://i.imgur.com/yk2O1ao.gif)
 
 To achieve this, you could do the following: 
 ```lua
-local deep = require "deep"
+deep = require("deep")
+layer = deep:new()
 
 -- The z index of the red cube
-local current_z = 1
-
--- Draws a horizontal line at passed y coordinate
-local function draw_rectangle(y)
-  love.graphics.setColor(1, 1, 1) -- Set color to white
-  love.graphics.rectangle("fill", 200, y, 300, 10) -- Draw thin rectangle
-end
+current_z = 1
 
 function love.draw()
-  -- Queue the three horizontal lines
-  deep.queue(2, draw_rectangle, 60)
-  deep.queue(3, draw_rectangle, 80)
-  deep.queue(4, draw_rectangle, 100)
+   -- Queue the three horizontal lines
+   layer:queue(2, function() draw_strip(200, 60) end)
+   layer:queue(3, function() draw_strip(200, 80) end)
+   layer:queue(4, function() draw_strip(200, 100) end)
 
-  -- Red square, which can move through z axis
-  deep.queue(current_z, function()
-    love.graphics.setColor(1, 0, 0) -- Set color to red
-    love.graphics.rectangle("fill", 300, 40, 80, 80)
-  end)
+   -- Red square, which can move through z axis
+   layer:queue(current_z, function()
+      -- Draws a red square
+      love.graphics.setColor(1, 0, 0)
+      love.graphics.rectangle("fill", 300, 40, 80, 80)
+   end)
 
-  -- Draw everything in the queue
-  deep.execute()
+   -- Draw everything in the queue
+   layer:draw()
 end
 
 -- Increases/decreases red square z on key press
 function love.keypressed(key)
-  if key == "up" then
-    current_z = current_z + 1
-  elseif key == "down" then
-    current_z = current_z - 1
-  end
+   if key == "up" then
+      current_z = current_z + 1
+   elseif key == "down" then
+      current_z = current_z - 1
+   end
+end
+
+-- Draws a horizontal white strip
+function draw_strip(x, y)
+   love.graphics.setColor(1, 1, 1)
+   love.graphics.rectangle("fill", x, y, 300, 10)
 end
 ```
 ---

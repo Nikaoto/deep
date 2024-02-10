@@ -83,7 +83,7 @@ function love.draw()
 end
 ```
 
-# Simplest example
+# Example
 ![love2d z axis drawing example](./example/simple.gif)
 
 To achieve this, you could do the following: 
@@ -137,15 +137,12 @@ Run `love example` from the root of this repository to get this:
 
 # Games using deep
 
-
 ### Gnomber
-
 Available on Steam (soon, not yet): https://store.steampowered.com/app/2800770/Gnomber/
 
 ![Gnomber preview](./example/gnomber.gif)
 
 ### Shamen
-
 A small jam game I with an older version of deep.
 
 Github source: https://github.com/nikaoto/shamen

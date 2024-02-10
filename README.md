@@ -84,7 +84,7 @@ end
 ```
 
 # Simplest example
-![love2d z axis drawing example](https://i.imgur.com/yk2O1ao.gif)
+![love2d z axis drawing example](./example/simple.gif)
 
 To achieve this, you could do the following: 
 ```lua
@@ -132,7 +132,7 @@ The `example/` directory has a slightly more involved demonstration of deep.
 
 Run `love example` from the root of this repository to get this:
 
-![movement example](https://i.imgur.com/j5OJe46.gif)
+![movement example](./example/movement.gif)
 
 
 # Games using deep
@@ -142,7 +142,7 @@ Run `love example` from the root of this repository to get this:
 
 Available on Steam (soon, not yet): https://store.steampowered.com/app/2800770/Gnomber/
 
-![Gnomber preview](https://i.imgur.com/tOvE43p.gif)
+![Gnomber preview](./example/gnomber.gif)
 
 ### Shamen
 
@@ -150,7 +150,7 @@ A small jam game I with an older version of deep.
 
 Github source: https://github.com/nikaoto/shamen
 
-![Shamen preview](https://i.imgur.com/YOdBqGR.gif)
+![Shamen preview](./example/shamen.gif)
 
 # Possible speed optimizations
 - Preallocate the queue with `table.new()` (only works in LuaJIT)

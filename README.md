@@ -138,7 +138,7 @@ Run `love example` from the root of this repository to get this:
 ## Games using deep
 
 ### Gnomber
-Available on Steam (soon, not yet): https://store.steampowered.com/app/2800770/Gnomber/
+Available on Steam: https://store.steampowered.com/app/2800770/Gnomber/
 
 ![Gnomber preview](./example/gnomber.gif)
 

@@ -8,7 +8,8 @@
 ```
 
 **deep** is a tiny high-performance library that lets you add drawing layers and
-a Z axis to any graphics framework in Lua.
+a Z axis to any graphics framework in Lua. Insteaad of z-sorting your draw calls,
+deep lets you keep a schedule which is executed in order.
 
 ## Usage
 After placing `deep.lua` inside your project:

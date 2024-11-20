@@ -148,10 +148,19 @@ Available on Steam: https://store.steampowered.com/app/2871950/Man_Pit/
 
 ![Man Pit preview](./example/manpit.png)
 
+### A Quiet Winter Walk Home
+Available on itch.io: https://sysl.itch.io/a-quiet-winter-walk-home
+
+![A Quiet Winter Walk Home](./example/quietwinterwalkhome.png)
+
+
 ### Shamen
-A small jam game I with an older version of deep.
+A small jam game that uses an older version of deep.
 
 Github source: https://github.com/nikaoto/shamen
+
+### Disk Mayhem
+Sourcehut source: https://sr.ht/~kikoodx/disk-mayhem/
 
 ![Shamen preview](./example/shamen.gif)
 

@@ -139,30 +139,32 @@ Run `love example` from the root of this repository to get this:
 ## Games using deep
 
 ### Gnomber
-Available on Steam: https://store.steampowered.com/app/2800770/Gnomber/
-
 ![Gnomber preview](./example/gnomber.gif)
 
-### Man Pit
-Available on Steam: https://store.steampowered.com/app/2871950/Man_Pit/
+Available on Steam: https://store.steampowered.com/app/2800770/Gnomber/
 
+
+### Man Pit
 ![Man Pit preview](./example/manpit.png)
 
-### A Quiet Winter Walk Home
-Available on itch.io: https://sysl.itch.io/a-quiet-winter-walk-home
+Available on Steam: https://store.steampowered.com/app/2871950/Man_Pit/
 
+
+### A Quiet Winter Walk Home
 ![A Quiet Winter Walk Home](./example/quietwinterwalkhome.png)
+
+Available on itch.io: https://sysl.itch.io/a-quiet-winter-walk-home
 
 
 ### Shamen
-A small jam game that uses an older version of deep.
+![Shamen preview](./example/shamen.gif)
 
 Github source: https://github.com/nikaoto/shamen
+
 
 ### Disk Mayhem
 Sourcehut source: https://sr.ht/~kikoodx/disk-mayhem/
 
-![Shamen preview](./example/shamen.gif)
 
 ## Possible speed optimizations
 - Preallocate the queue with `table.new()` (only works in LuaJIT)

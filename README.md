@@ -143,6 +143,11 @@ Available on Steam: https://store.steampowered.com/app/2800770/Gnomber/
 
 ![Gnomber preview](./example/gnomber.gif)
 
+### Man Pit
+Available on Steam: https://store.steampowered.com/app/2871950/Man_Pit/
+
+![Man Pit preview](./example/manpit.png)
+
 ### Shamen
 A small jam game I with an older version of deep.
 

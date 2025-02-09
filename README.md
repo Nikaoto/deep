@@ -64,25 +64,13 @@ Queues a function for execution at index `z`, which **must** be an integer. It c
 be negative, positive or zero. Using a float or any other type here will not
 queue the action.
 
-### `layer:restrict(z_from, z_to)`
-Used for culling drawcalls that don't fall into the given z interval.This is
-basically a primitive way to do frustum-culling to optimize your performance.
-You most likely won't need this as you'll have your own way to cull objects.
-```lua
-function love.draw()
-   -- This will get added to the queue, but because of the restrict statement,
-   -- it won't get drawn when layer:draw() is called.
-   layer:queue(102, function() print("hi") end)
+### `layer:draw(z_from, z_to)`
+Executes all the queued functions for that layer in ascending Z order.
 
-   layer:restrict(100, 120)
-   
-   -- This will not get added to the queue
-   layer:queue(101, function() draw_something() end)
-   
-    -- Will not do anything, because we have no valid actions
-   layer:draw()
-end
-```
+* When `z_from` and `z_to` are nil, all functions are executed.
+* When either one of them is not nil, functions outside of the specified z
+interval will be skipped. Both `z_from` and `z_to` are inclusive.
+
 
 ## Example
 ![love2d z axis drawing example](./example/simple.gif)

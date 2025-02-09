@@ -40,14 +40,6 @@ function deep:new()
 end
 
 function deep:queue(z, fn)
-   if self.r.z_from and z < self.r.z_from then
-      return
-   end
-
-   if self.r.z_to and z > self.r.z_to then
-      return
-   end
-
    if not self.q[z] then
       self.q[z] = {}
    end
@@ -62,11 +54,6 @@ function deep:queue(z, fn)
    elseif z > self.z_max then
       self.z_max = z
    end
-end
-
-function deep:restrict(z_from, z_to)
-   self.r.z_from = z_from
-   self.r.z_to = z_to
 end
 
 function deep:draw(z_from, z_to)

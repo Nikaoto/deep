@@ -1,7 +1,7 @@
 --[[
-   deep v3.0.0
+   deep v3.1.0
    Add layers or z axis to 2D graphics.
-   View full source code at https://github.com/Nikaoto/deep
+   https://github.com/Nikaoto/deep
 
    License (MIT):
    Copyright (c) 2023 Nikoloz Otiashvili

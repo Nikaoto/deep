@@ -132,6 +132,12 @@ Run `love example` from the root of this repository to get this:
 Available on Steam: https://store.steampowered.com/app/2800770/Gnomber/
 
 
+### Queue Queen
+![Queue Queen preview](./example/queuequeen.png)
+
+Available on Steam: https://store.steampowered.com/app/3941130?utm_source=deep_github
+
+
 ### Man Pit
 ![Man Pit preview](./example/manpit.png)
 
